@@ -85,7 +85,7 @@ public class Genetic : MonoBehaviour {
         //first create all node game objects
         foreach(KeyValuePair<int, Node> entry in nodes)
         {
-            Vector2 setPos = new Vector2(entry.Value.pos.x, (float)GetComponent<BuildMaze>().getHeight() - entry.Value.pos.y);
+            Vector2 setPos = new Vector2((float)GetComponent<BuildMaze>().getWidth() - (entry.Value.pos.x-0.5f), (float)GetComponent<BuildMaze>().getHeight() - (entry.Value.pos.y-0.5f));
             Unit u = addNode(entry.Key, entry.Value.pos);
         }
 
@@ -131,7 +131,7 @@ public class Genetic : MonoBehaviour {
 
     public Unit addNode(int id, Vector2 pos)
     {
-        Unit point = new Unit(new Vector3(pos.x*2, UnitHeight, pos.y*2),id, UnitMarker);
+        Unit point = new Unit(new Vector3(pos.x*2, UnitHeight, pos.y*2 ),id, UnitMarker);
         units.Add(point);
         return point;
     }
