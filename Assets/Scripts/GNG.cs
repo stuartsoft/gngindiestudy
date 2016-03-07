@@ -39,6 +39,16 @@ public class Unit
         mEdges = new List<Edge>();
         mError = 0.0f;
     }
+    public Unit(Vector3 center, int id, GameObject UnitMarker)
+    {
+        mCenter = center;
+        mDrawnUnit = Object.Instantiate<GameObject>(UnitMarker); //THIS NEEDS TO BE CHANGED LATER
+        mDrawnUnit.name = id.ToString();
+        mDrawnUnit.transform.position = mCenter;
+        mEdges = new List<Edge>();
+        mError = 0.0f;
+        ID = id;
+    }
     public List<Edge> mEdges;
     public float mError;
     public Vector3 mCenter;
