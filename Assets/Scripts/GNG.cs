@@ -42,6 +42,7 @@ public class Unit
     public List<Edge> mEdges;
     public float mError;
     public Vector3 mCenter;
+    public int ID;
     public GameObject mDrawnUnit; //gameobject which generates the drawing of the line
 }
 
