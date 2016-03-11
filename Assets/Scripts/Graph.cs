@@ -8,7 +8,6 @@ public class Graph
 
     public Graph(int initialNodes, List<GameObject> floors, List<GameObject> walls)
     {
-
         nodes = new Dictionary<int, Node>();
         for (int i = 0; i < initialNodes; i++)
         {
