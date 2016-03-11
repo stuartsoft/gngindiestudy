@@ -15,7 +15,7 @@ public class Genetic : MonoBehaviour {
     void Start()
     {
         mazeBuilder.BuildTheMaze();
-        Graph g = new Graph(50, mazeBuilder.floorlst, mazeBuilder.walllst);
+        Graph g = new Graph(500, mazeBuilder.floorlst, mazeBuilder.walllst);
         g.printAdjMatrix();
 
         

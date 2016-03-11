@@ -21,6 +21,24 @@ public class Graph
             Node n = addNewNode(rndWorldPos);
         }
 
+        connectAllNodes();
+    }
+
+    void connectAllNodes()
+    {
+        foreach (KeyValuePair<int,Node> entry in nodes)
+        {
+            foreach (KeyValuePair<int, Node> entry2 in nodes)
+            {
+                if (entry.Value != entry2.Value)
+                {
+                    if (!Physics.Linecast(new Vector3(entry.Value.pos.x, 2, entry.Value.pos.y), new Vector3(entry2.Value.pos.x, 2, entry2.Value.pos.y)))
+                    {
+                        entry.Value.connectTo(entry2.Value);
+                    }
+                }
+            }
+        }
     }
 
     public int getFirstUnusedID()

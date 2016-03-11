@@ -293,6 +293,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f87dae2ad55fad4da024f7e7a0b5163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &587924163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 587924168}
+  - 20: {fileID: 587924167}
+  - 124: {fileID: 587924166}
+  - 92: {fileID: 587924165}
+  - 81: {fileID: 587924164}
+  m_Layer: 0
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &587924164
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587924163}
+  m_Enabled: 1
+--- !u!92 &587924165
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587924163}
+  m_Enabled: 1
+--- !u!124 &587924166
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587924163}
+  m_Enabled: 1
+--- !u!20 &587924167
+Camera:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587924163}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: .300000012
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 70
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: .0219999999
+  m_StereoMirrorMode: 0
+--- !u!4 &587924168
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 587924163}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalPosition: {x: 60, y: 120, z: 60}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &692525408
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +511,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 178322, guid: 00fb3f9f32e9161409e1abab07c30988, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00fb3f9f32e9161409e1abab07c30988, type: 2}
@@ -626,7 +712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44dd5e8b4d78dd4cb6a30de25fb7120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitHeight: 4
+  UnitHeight: 2
   UnitMarker: {fileID: 129982, guid: 03c25e169a5dcf74789c6fda5be4b01c, type: 2}
   edgeMarker: {fileID: 100416, guid: 1a6e34b1eed7f87458ea3c2fbc11dfd0, type: 2}
   mazeBuilder: {fileID: 1520456645}
