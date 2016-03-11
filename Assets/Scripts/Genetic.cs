@@ -7,34 +7,42 @@ public class Genetic : MonoBehaviour {
     public float UnitHeight = 1;
     public GameObject UnitMarker;
     public GameObject edgeMarker;
-    public List<Unit> units;
-    public List<Edge> edges;
+    public List<GraphUnit> units;
+    public List<GraphEdge> edges;
+
+    GameObject graphGameObject;
+    GameObject nodeGameObjects;
 
     public BuildMaze mazeBuilder;
 
     void Start()
     {
+        graphGameObject = new GameObject("Graph");
+        nodeGameObjects = new GameObject("Nodes");
+        nodeGameObjects.transform.parent = graphGameObject.transform;
+
         mazeBuilder.BuildTheMaze();
+
         Graph g = new Graph(500, mazeBuilder.floorlst, mazeBuilder.walllst);
         g.printAdjMatrix();
 
         
         //set up data structures
-        units = new List<Unit>();
-        edges = new List<Edge>();
+        units = new List<GraphUnit>();
+        edges = new List<GraphEdge>();
 
         //first create all node game objects
         foreach(KeyValuePair<int, Graph.Node> entry in g.nodes)
         {
             Vector2 setPos = new Vector2((entry.Value.pos.x-0.5f), (entry.Value.pos.y-0.5f));
-            Unit u = addNode(entry.Key, entry.Value.pos);
+            GraphUnit u = addNode(entry.Key, entry.Value.pos);
         }
 
         //connect all node game objects
         foreach (KeyValuePair<int, Graph.Node> entry in g.nodes)
         {
             //find the root unit
-            Unit rootUnit = units[0];
+            GraphUnit rootUnit = units[0];
             for (int i = 0; i < units.Count; i++)
             {
                 if (units[i].ID == entry.Value.ID)
@@ -46,7 +54,7 @@ public class Genetic : MonoBehaviour {
 
             for (int i = 0; i < entry.Value.connectedNodes.Count; i++)
             {
-                Unit connUnit = units[1];
+                GraphUnit connUnit = units[1];
                 for (int j = 0; j < units.Count; j++)
                 {
                     if (units[j].ID == entry.Value.connectedNodes[i].ID)
@@ -59,10 +67,6 @@ public class Genetic : MonoBehaviour {
             }
         }
 
-        //Unit u1 = addNode(0, new Vector2(0, 0));
-        //Unit u2 = addNode(1, new Vector2(5, 5));
-        //connectNodes(u1, u2);
-
         for (int i = 0; i < edges.Count; ++i)
         {
             edges[i].mDrawnLine.GetComponent<LineRenderer>().SetPosition(0, edges[i].mPointA.mCenter - new Vector3(0.0f, 0.1f, 0.0f));
@@ -71,20 +75,60 @@ public class Genetic : MonoBehaviour {
         
     }
 
-    public Unit addNode(int id, Vector2 pos)
+    public GraphUnit addNode(int id, Vector2 pos)
     {
-        Unit point = new Unit(new Vector3(pos.x, UnitHeight, pos.y ),id, UnitMarker);
+        GraphUnit point = new GraphUnit(new Vector3(pos.x, UnitHeight, pos.y ),id, UnitMarker, nodeGameObjects);
         units.Add(point);
         return point;
     }
 
-    public void connectNodes(Unit u1, Unit u2)
+    public void connectNodes(GraphUnit u1, GraphUnit u2)
     {
-        Edge temp = new Edge(u1, u2);
+        GraphEdge temp = new GraphEdge(u1, u2);
         edges.Add(temp);
         u1.mEdges.Add(temp);
         u2.mEdges.Add(temp);
 
+    }
+
+    public class GraphEdge
+    {
+        public GraphEdge(GraphUnit pointA, GraphUnit pointB)
+        {
+            mAge = 0;
+            mPointA = pointA;
+            mPointB = pointB;
+            mDrawnLine = new GameObject();
+            mDrawnLine.AddComponent<LineRenderer>();
+            mDrawnLine.GetComponent<LineRenderer>().SetWidth(0.2f, 0.2f);
+            mDrawnLine.GetComponent<LineRenderer>().material = new Material(Shader.Find("Transparent/Diffuse"));
+            mDrawnLine.GetComponent<LineRenderer>().SetColors(Color.yellow, Color.yellow);
+            mDrawnLine.transform.parent = pointA.mDrawnUnit.transform;
+        }
+
+        public GraphUnit mPointA, mPointB; //index of the point from the point ArrayList
+        public int mAge; //track the age of the edge
+        public GameObject mDrawnLine; //gameobject which generates the drawing of the line
+    }
+
+    public class GraphUnit
+    {
+        public GraphUnit(Vector3 center, int id, GameObject UnitMarker, GameObject Parent)
+        {
+            mCenter = center;
+            mDrawnUnit = Object.Instantiate<GameObject>(UnitMarker); //THIS NEEDS TO BE CHANGED LATER
+            mDrawnUnit.name = id.ToString();
+            mDrawnUnit.transform.position = mCenter;
+            mEdges = new List<GraphEdge>();
+            mError = 0.0f;
+            ID = id;
+            mDrawnUnit.transform.parent = Parent.transform;
+        }
+        public List<GraphEdge> mEdges;
+        public float mError;
+        public Vector3 mCenter;
+        public int ID;
+        public GameObject mDrawnUnit; //gameobject which generates the drawing of the line
     }
 
 }
