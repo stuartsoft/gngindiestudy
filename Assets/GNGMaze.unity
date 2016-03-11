@@ -575,6 +575,10 @@ MonoBehaviour:
   mazeText: {fileID: 4900000, guid: 60129702cb24428448c0ccef7dea295f, type: 3}
   floorTile: {fileID: 100416, guid: 1a6e34b1eed7f87458ea3c2fbc11dfd0, type: 2}
   wallTile: {fileID: 172398, guid: 343dd0c2565ab204e96642306d63e8e2, type: 2}
+  floors: {fileID: 0}
+  walls: {fileID: 0}
+  floorlst: []
+  walllst: []
 --- !u!4 &1520456646
 Transform:
   m_ObjectHideFlags: 0
@@ -625,6 +629,7 @@ MonoBehaviour:
   UnitHeight: 4
   UnitMarker: {fileID: 129982, guid: 03c25e169a5dcf74789c6fda5be4b01c, type: 2}
   edgeMarker: {fileID: 100416, guid: 1a6e34b1eed7f87458ea3c2fbc11dfd0, type: 2}
+  mazeBuilder: {fileID: 1520456645}
 --- !u!1 &1788802565
 GameObject:
   m_ObjectHideFlags: 0

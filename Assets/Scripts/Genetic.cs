@@ -18,20 +18,20 @@ public class Genetic : MonoBehaviour {
         Graph g = new Graph(50, mazeBuilder.floorlst, mazeBuilder.walllst);
         g.printAdjMatrix();
 
-        /*
+        
         //set up data structures
         units = new List<Unit>();
         edges = new List<Edge>();
 
         //first create all node game objects
-        foreach(KeyValuePair<int, Node> entry in nodes)
+        foreach(KeyValuePair<int, Graph.Node> entry in g.nodes)
         {
             Vector2 setPos = new Vector2((entry.Value.pos.x-0.5f), (entry.Value.pos.y-0.5f));
             Unit u = addNode(entry.Key, entry.Value.pos);
         }
 
         //connect all node game objects
-        foreach (KeyValuePair<int, Node> entry in nodes)
+        foreach (KeyValuePair<int, Graph.Node> entry in g.nodes)
         {
             //find the root unit
             Unit rootUnit = units[0];
@@ -68,12 +68,12 @@ public class Genetic : MonoBehaviour {
             edges[i].mDrawnLine.GetComponent<LineRenderer>().SetPosition(0, edges[i].mPointA.mCenter - new Vector3(0.0f, 0.1f, 0.0f));
             edges[i].mDrawnLine.GetComponent<LineRenderer>().SetPosition(1, edges[i].mPointB.mCenter - new Vector3(0.0f, 0.1f, 0.0f));
         }
-        */
+        
     }
 
     public Unit addNode(int id, Vector2 pos)
     {
-        Unit point = new Unit(new Vector3(pos.x*2, UnitHeight, (float)GetComponent<BuildMaze>().getHeight() - pos.y*2 ),id, UnitMarker);
+        Unit point = new Unit(new Vector3(pos.x, UnitHeight, pos.y ),id, UnitMarker);
         units.Add(point);
         return point;
     }

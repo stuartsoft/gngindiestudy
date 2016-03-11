@@ -8,14 +8,18 @@ public class Graph
 
     public Graph(int initialNodes, List<GameObject> floors, List<GameObject> walls)
     {
+
         nodes = new Dictionary<int, Node>();
         for (int i = 0; i < initialNodes; i++)
         {
-            Node n = addNewNode(new Vector2(0,0));
-            n.connectTo(nodes[0]);
+            int rndTile = Random.Range(0, floors.Count);
+            //get the 2d bounding area for any floor tile
+            MeshCollider mc = floors[rndTile].GetComponent<MeshCollider>();
+            Vector2 xyWorldSpaceBoundsBottomLeft = new Vector2(mc.bounds.center.x - mc.bounds.size.x/2, mc.bounds.center.z - mc.bounds.size.z/2);
+            Vector2 rndPosInTile = new Vector2(Random.Range(0, mc.bounds.size.x), Random.Range(0, mc.bounds.size.z));
+            Vector2 rndWorldPos = xyWorldSpaceBoundsBottomLeft + rndPosInTile;
+            Node n = addNewNode(rndWorldPos);
         }
-
-        removeNode(5);
 
     }
 
