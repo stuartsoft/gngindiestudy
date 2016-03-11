@@ -17,24 +17,51 @@ public class Genetic : MonoBehaviour {
 
     void Start()
     {
-        graphGameObject = new GameObject("Graph");
-        nodeGameObjects = new GameObject("Nodes");
-        nodeGameObjects.transform.parent = graphGameObject.transform;
-
-        mazeBuilder.BuildTheMaze();
-
-        Graph g = new Graph(500, mazeBuilder.floorlst, mazeBuilder.walllst);
-        g.printAdjMatrix();
-
-        
-        //set up data structures
         units = new List<GraphUnit>();
         edges = new List<GraphEdge>();
 
+        graphGameObject = new GameObject("Graph");
+
+        mazeBuilder.BuildTheMaze();
+
+        Graph g = new Graph(200, mazeBuilder.floorlst, mazeBuilder.walllst);
+        displayGraph(g);
+        Graph g2 = new Graph(200, mazeBuilder.floorlst, mazeBuilder.walllst);
+        displayGraph(g2);
+
+    }
+
+    GraphUnit addNode(int id, Vector2 pos)
+    {
+        GraphUnit point = new GraphUnit(new Vector3(pos.x, UnitHeight, pos.y ),id, UnitMarker, nodeGameObjects);
+        units.Add(point);
+        return point;
+    }
+
+    void connectNodes(GraphUnit u1, GraphUnit u2)
+    {
+        GraphEdge temp = new GraphEdge(u1, u2);
+        edges.Add(temp);
+        u1.mEdges.Add(temp);
+        u2.mEdges.Add(temp);
+
+    }
+
+    void displayGraph(Graph g)
+    {
+        //set up data structures
+        units.Clear();
+        edges.Clear();
+
+        //clear game objects
+        Destroy(nodeGameObjects);
+        nodeGameObjects = new GameObject("Nodes");
+        nodeGameObjects.transform.parent = graphGameObject.transform;
+
         //first create all node game objects
-        foreach(KeyValuePair<int, Graph.Node> entry in g.nodes)
+        foreach (KeyValuePair<int, Graph.Node> entry in g.nodes)
         {
-            Vector2 setPos = new Vector2((entry.Value.pos.x-0.5f), (entry.Value.pos.y-0.5f));
+            Vector2 setPos = new Vector2((entry.Value.pos.x - 0.5f), (entry.Value.pos.y - 0.5f));
             GraphUnit u = addNode(entry.Key, entry.Value.pos);
         }
 
@@ -72,22 +99,6 @@ public class Genetic : MonoBehaviour {
             edges[i].mDrawnLine.GetComponent<LineRenderer>().SetPosition(0, edges[i].mPointA.mCenter - new Vector3(0.0f, 0.1f, 0.0f));
             edges[i].mDrawnLine.GetComponent<LineRenderer>().SetPosition(1, edges[i].mPointB.mCenter - new Vector3(0.0f, 0.1f, 0.0f));
         }
-        
-    }
-
-    public GraphUnit addNode(int id, Vector2 pos)
-    {
-        GraphUnit point = new GraphUnit(new Vector3(pos.x, UnitHeight, pos.y ),id, UnitMarker, nodeGameObjects);
-        units.Add(point);
-        return point;
-    }
-
-    public void connectNodes(GraphUnit u1, GraphUnit u2)
-    {
-        GraphEdge temp = new GraphEdge(u1, u2);
-        edges.Add(temp);
-        u1.mEdges.Add(temp);
-        u2.mEdges.Add(temp);
 
     }
 
