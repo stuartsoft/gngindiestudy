@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BuildMaze : MonoBehaviour {
 
@@ -16,8 +17,12 @@ public class BuildMaze : MonoBehaviour {
     public GameObject floorTile;
     public GameObject wallTile;
 
+    public GameObject floors;
+    public GameObject walls;
 
-
+    public List<GameObject> floorlst;
+    public List<GameObject> walllst;
+    
     string mazeStr;
     int i;
     int j;
@@ -29,6 +34,12 @@ public class BuildMaze : MonoBehaviour {
     // Use this for initialization
     void Start () {
         
+
+    }
+
+
+    public void BuildTheMaze()
+    {
         mazeStr = mazeText.ToString();
         i = 0;
         j = 0;
@@ -38,9 +49,12 @@ public class BuildMaze : MonoBehaviour {
         double workingWidth = 0.0;
         double workingHeight = 0.0;
 
-        GameObject floors = new GameObject("floors");
+        floorlst = new List<GameObject>();
+        walllst = new List<GameObject>();
+
+        floors = new GameObject("floors");
         floors.transform.parent = transform;
-        GameObject walls = new GameObject("walls");
+        walls = new GameObject("walls");
         walls.transform.parent = transform;
 
         while (total < mazeStr.Length)
@@ -51,6 +65,7 @@ public class BuildMaze : MonoBehaviour {
                 newTile.transform.position = new Vector3(i * newTile.transform.localScale.x, 0, j * newTile.transform.localScale.y);
                 newTile.transform.Rotate(new Vector3(90, 0, 0));
                 newTile.transform.parent = floors.transform;
+                floorlst.Add(newTile);
 
                 //Debug.Log("dis ting." + i.ToString() + ", " + j.ToString());
 
@@ -59,7 +74,8 @@ public class BuildMaze : MonoBehaviour {
             {
                 GameObject newWall = Instantiate<GameObject>(wallTile);
                 newWall.transform.position = new Vector3(i * newWall.transform.localScale.x, 0, j * newWall.transform.localScale.z);
-                newWall.transform.parent = walls.transform  ;
+                newWall.transform.parent = walls.transform;
+                walllst.Add(newWall);
             }
             else if (mazeStr[total] == '\n') //it's a new line
             {
@@ -77,10 +93,9 @@ public class BuildMaze : MonoBehaviour {
 
     }
 
-    
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
         
     }
 }

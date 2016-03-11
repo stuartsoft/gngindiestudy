@@ -10,9 +10,12 @@ public class Genetic : MonoBehaviour {
     public List<Unit> units;
     public List<Edge> edges;
 
+    public BuildMaze mazeBuilder;
+
     void Start()
     {
-        Graph g = new Graph(50);
+        mazeBuilder.BuildTheMaze();
+        Graph g = new Graph(50, mazeBuilder.floorlst, mazeBuilder.walllst);
         g.printAdjMatrix();
 
         /*
