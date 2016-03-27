@@ -15,6 +15,8 @@ public class Genetic : MonoBehaviour {
 
     public BuildMaze mazeBuilder;
 
+    Generation gen;
+
     void Start()
     {
         units = new List<GraphUnit>();
@@ -24,11 +26,25 @@ public class Genetic : MonoBehaviour {
 
         mazeBuilder.BuildTheMaze();
 
-        Graph g = new Graph(200, mazeBuilder.floorlst, mazeBuilder.walllst);
-        displayGraph(g);
-        Graph g2 = new Graph(200, mazeBuilder.floorlst, mazeBuilder.walllst);
-        displayGraph(g2);
+        List<Graph> initialGeneration = new List<Graph>();
 
+        for (int i = 0; i < Generation.numEntitiesPerGeneration; i++)
+        {
+            Graph tempgraph = new Graph(500, mazeBuilder.floorlst, mazeBuilder.walllst);
+            initialGeneration.Add(tempgraph);
+        }
+        
+        displayGraph(initialGeneration[initialGeneration.Count-1]);
+
+        gen = new Generation(1, initialGeneration, 0, 0);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gen = gen.getDecendents();
+        }
     }
 
     GraphUnit addNode(int id, Vector2 pos)

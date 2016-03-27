@@ -132,4 +132,21 @@ public class Graph
         }
     }
 
+    public List<Node> AStar(int startingNodeKey, int endingNodeKey, List<Node> pathHistory)
+    {
+        //if this is the very first iteration
+        if (pathHistory == null) {
+            pathHistory = new List<Node>();
+            pathHistory.Add(nodes[startingNodeKey]);
+        }
+
+
+
+        //We have reached the goal, end recursion
+        if (pathHistory[pathHistory.Count - 1].ID == endingNodeKey)
+            return pathHistory;
+
+        return new List<Node>;//no solution found
+    }
+
 }
