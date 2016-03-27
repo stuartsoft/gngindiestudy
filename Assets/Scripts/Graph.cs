@@ -68,6 +68,12 @@ public class Graph
         public int ID;
         public Vector2 pos;
         public List<Node> connectedNodes;
+        public float g, h;//public values for temporary use during searching and heuristic analysis
+        public float f 
+        {
+            get {return g + h; }
+            private set { }
+        }
 
         public Node(Vector2 position, int id)
         {
@@ -140,13 +146,49 @@ public class Graph
             pathHistory.Add(nodes[startingNodeKey]);
         }
 
+        Node currentNode = pathHistory[pathHistory.Count - 1];
+
+        List<Node> adjNodes = pathHistory[pathHistory.Count - 1].connectedNodes;
+        //remove adjacent nodes that have already been evaluated by this path
+        for (int i = 0; i < adjNodes.Count; i++)
+        {
+            for (int j = 0; j < pathHistory.Count; j++)
+            {
+                if (adjNodes[i].ID == pathHistory[j].ID)
+                {
+                    adjNodes.RemoveAt(i);
+                    i--;//go back because we just removed an index
+                    break;
+                }
+            }
+        }
+
+        if (adjNodes.Count == 0  && pathHistory[pathHistory.Count-1].ID != endingNodeKey)
+        {
+            return new List<Node>();//no more adj node paths to explore from point.
+            //Return empty list because this path doesn't work
+        }
+
+        //score adjacent nodes
+        foreach (Node n in adjNodes)
+        {
+            n.g = currentNode.g + Vector2.Distance(currentNode.pos, n.pos);
+            n.h = Vector2.Distance(n.pos, nodes[endingNodeKey].pos);
+        }
+        //sort adj nodes
+
+        //do selection sort to order by f(n) value
+
+        //recursivly run A* starting with the best f(n) scoring nodes
+        
+        //return the first path that works
 
 
         //We have reached the goal, end recursion
         if (pathHistory[pathHistory.Count - 1].ID == endingNodeKey)
             return pathHistory;
 
-        return new List<Node>;//no solution found
+        return new List<Node>();//no solution found
     }
 
 }
