@@ -177,16 +177,41 @@ public class Graph
         }
         //sort adj nodes
 
-        //do selection sort to order by f(n) value
+        int firstUnsortedIndex = 0;
+        for (int i = 0; i < adjNodes.Count; i++)
+        {
+            float minVal = 99999;
+            int minIndex = 0;
+            for (int j = firstUnsortedIndex; j < adjNodes.Count; j++)
+            {
+                if (adjNodes[j].f < minVal)
+                {
+                    minVal = adjNodes[j].f;
+                    minIndex = j;
+                }
+            }
+            //swap the lowest value item to the first unsorted position
+            Node tempNode = adjNodes[firstUnsortedIndex];
+            adjNodes[firstUnsortedIndex] = adjNodes[minIndex];
+            adjNodes[minIndex] = tempNode;
 
-        //recursivly run A* starting with the best f(n) scoring nodes
-        
-        //return the first path that works
+            firstUnsortedIndex++;
+        }
 
+        //actually begin evaluating adjacent positions
+        foreach(Node n in adjNodes)
+        {
+            List<Node> nextPathHistory = pathHistory;
+            nextPathHistory.Add(n);
 
-        //We have reached the goal, end recursion
-        if (pathHistory[pathHistory.Count - 1].ID == endingNodeKey)
-            return pathHistory;
+            //We have reached the goal, end recursion
+            if (nextPathHistory[nextPathHistory.Count - 1].ID == endingNodeKey)
+                return pathHistory;
+            //make the recursive call
+            List<Node> result = AStar(startingNodeKey, endingNodeKey, nextPathHistory);
+            if (result != null && result.Count > 0)
+                return result;//we have a valid result, pass it up the recursive chain
+        }
 
         return new List<Node>();//no solution found
     }
