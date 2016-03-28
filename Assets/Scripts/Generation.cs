@@ -22,6 +22,11 @@ public class Generation {
         }
     }
 
+    public List<Graph> getPredecessors()
+    {
+        return predecessors;
+    }
+
     public Generation getDecendents()
     {
         onSetup();

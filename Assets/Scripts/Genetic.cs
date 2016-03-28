@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Genetic : MonoBehaviour {
 
@@ -13,9 +14,13 @@ public class Genetic : MonoBehaviour {
     GameObject graphGameObject;
     GameObject nodeGameObjects;
 
+    public InputField nodeAtxt;
+    public InputField nodeBtxt;
+
     public BuildMaze mazeBuilder;
 
     Generation gen;
+    Graph displayedGraph;
 
     void Start()
     {
@@ -33,8 +38,10 @@ public class Genetic : MonoBehaviour {
             Graph tempgraph = new Graph(500, mazeBuilder.floorlst, mazeBuilder.walllst);
             initialGeneration.Add(tempgraph);
         }
-        
-        displayGraph(initialGeneration[initialGeneration.Count-1]);
+
+        displayedGraph = initialGeneration[initialGeneration.Count - 1];
+
+        displayGraph(displayedGraph);
 
         gen = new Generation(1, initialGeneration, 0, 0);
     }
@@ -45,6 +52,19 @@ public class Genetic : MonoBehaviour {
         {
             gen = gen.getDecendents();
         }
+    }
+
+    public void TestAStar()
+    {
+        int idA = int.Parse(nodeAtxt.text);
+        int idB = int.Parse(nodeBtxt.text);
+        List<Graph.Node> results = displayedGraph.AStar(idA, idB, null);
+        string resultsStr = "";
+        for(int i = 0; i < results.Count; i++)
+        {
+            resultsStr += results[i].ID + " to ";
+        }
+        Debug.Log(resultsStr);
     }
 
     GraphUnit addNode(int id, Vector2 pos)
@@ -144,7 +164,7 @@ public class Genetic : MonoBehaviour {
         {
             mCenter = center;
             mDrawnUnit = Object.Instantiate<GameObject>(UnitMarker); //THIS NEEDS TO BE CHANGED LATER
-            mDrawnUnit.name = id.ToString();
+            mDrawnUnit.name = "Node: " + id.ToString();
             mDrawnUnit.transform.position = mCenter;
             mEdges = new List<GraphEdge>();
             mError = 0.0f;
