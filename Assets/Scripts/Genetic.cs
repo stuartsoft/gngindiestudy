@@ -48,7 +48,7 @@ public class Genetic : MonoBehaviour {
         displayGraph(displayedGraph);
 
         gen = new Generation(1, initialGeneration, 0, 0, mazeBuilder.floorlst, mazeBuilder.walllst);
-        //gen.getDecendents();//start the process!
+        gen.getDecendents();//start the process!
 
     }
 

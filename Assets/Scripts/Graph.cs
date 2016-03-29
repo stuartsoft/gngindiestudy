@@ -257,7 +257,7 @@ public class Graph
 
         //store results
         AStarAvgPathLength = avgPathLen;
-        AStarPathSuccess = successfulPaths / startingPoint.Count;
+        AStarPathSuccess = successfulPaths / (float)startingPoint.Count;
 
     }
 
