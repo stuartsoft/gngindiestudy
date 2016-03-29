@@ -14,18 +14,22 @@ public class Genetic : MonoBehaviour {
     GameObject graphGameObject;
     GameObject nodeGameObjects;
 
-    public InputField nodeAtxt;
-    public InputField nodeBtxt;
-
     public BuildMaze mazeBuilder;
+    public Camera camera;
 
     Generation gen;
     Graph displayedGraph;
+
+    Graph.Node nodeSearchA;
+    Graph.Node nodeSearchB;
 
     void Start()
     {
         units = new List<GraphUnit>();
         edges = new List<GraphEdge>();
+
+        nodeSearchA = null;
+        nodeSearchB = null;
 
         graphGameObject = new GameObject("Graph");
 
@@ -52,19 +56,52 @@ public class Genetic : MonoBehaviour {
         {
             gen = gen.getDecendents();
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(mouseRay, out hit, int.MaxValue))
+            {
+                GameObject tempGO = hit.transform.gameObject;
+                if (tempGO.name.Contains("Node"))
+                {
+                    int id = int.Parse(tempGO.name.Split(' ')[1]);
+                    if (nodeSearchA == null)
+                    {
+                        //clear all colors
+                        foreach(KeyValuePair<int, Graph.Node> entry in displayedGraph.nodes)
+                        {
+                            GameObject.Find("Node: " + entry.Value.ID).GetComponent<Renderer>().material.color = Color.red;
+                        }
+
+                        nodeSearchA = displayedGraph.nodes[id];
+                        tempGO.GetComponent<Renderer>().material.color = Color.green;
+                    }
+                    else
+                    {
+                        nodeSearchB = displayedGraph.nodes[id];
+                        TestAStar();
+                    }
+                }
+            }
+        }
     }
 
     public void TestAStar()
     {
-        int idA = int.Parse(nodeAtxt.text);
-        int idB = int.Parse(nodeBtxt.text);
+        int idA = nodeSearchA.ID;
+        int idB = nodeSearchB.ID;
         List<Graph.Node> results = displayedGraph.AStar(idA, idB);
         string resultsStr = "";
         for(int i = 0; i < results.Count; i++)
         {
+            GameObject.Find("Node: " + results[i].ID).GetComponent<Renderer>().material.color = Color.green;
             resultsStr += results[i].ID + " to ";
         }
         Debug.Log(resultsStr);
+        nodeSearchA = null;
+        nodeSearchB = null;
     }
 
     GraphUnit addNode(int id, Vector2 pos)
