@@ -162,29 +162,54 @@ public class Graph
             }
             //evaluate the best scoring path in our frontier
 
-            List<Node> currentPath = pathFrontier[minIndex];
+            List<Node> currentPath = new List<Node>();
+            foreach (Node n in pathFrontier[minIndex])
+            {
+                //deep copy everything except the connected node list
+                Node tempNode = new Node(new Vector2(n.pos.x, n.pos.y), n.ID);
+                tempNode.g = n.g;
+                tempNode.h = n.h;
+                currentPath.Add(tempNode);
+            }
             pathFrontier.RemoveAt(minIndex);//remove the path from the frontier, it's children will be added back
-            List<Node> adjNodes = currentPath[currentPath.Count - 1].connectedNodes;
+            List<int> adjNodeIDs = new List<int>();
+            foreach (Node n in nodes[currentPath[currentPath.Count - 1].ID].connectedNodes)
+            {
+                adjNodeIDs.Add(n.ID);
+            }
 
             //remove adjacent nodes that have already been evaluated by this path
-            for (int i = 0; i < adjNodes.Count; i++)
+            for (int i = 0; i < adjNodeIDs.Count; i++)
             {
                 for (int j = 0; j < currentPath.Count; j++)
                 {
-                    if (adjNodes[i].ID == currentPath[j].ID)
+                    if (adjNodeIDs[i] == currentPath[j].ID)
                     {
-                        adjNodes.RemoveAt(i);
+                        adjNodeIDs.RemoveAt(i);
                         i--;//go back because we just removed an index
                         break;
                     }
                 }
             }
-            if (adjNodes.Count != 0)
+            if (adjNodeIDs.Count != 0)
             {
-                for (int i = 0; i < adjNodes.Count; i++)
+                for (int i = 0; i < adjNodeIDs.Count; i++)
                 {
-                    List<Node> nextPath = currentPath;
-                    nextPath.Add(adjNodes[i]);
+                    List<Node> nextPath = new List<Node>();
+                    foreach (Node n in currentPath)
+                    {
+                        //deep copy everything except the connected node list
+                        Node tempNode = new Node(new Vector2(n.pos.x, n.pos.y), n.ID);
+                        tempNode.g = n.g;
+                        tempNode.h = n.h;
+                        nextPath.Add(tempNode);
+                    }
+
+                    Node nextNode = new Node(new Vector2(nodes[adjNodeIDs[i]].pos.x, nodes[adjNodeIDs[i]].pos.y), nodes[adjNodeIDs[i]].ID);
+                    nextNode.g = nodes[adjNodeIDs[i]].g;
+                    nextNode.h = nodes[adjNodeIDs[i]].h;
+                    nextPath.Add(nextNode);
+
                     Node lastNode = nextPath[nextPath.Count - 1];
                     Node secondLastNode = nextPath[nextPath.Count - 2];
                     lastNode.g = secondLastNode.g + Vector2.Distance(lastNode.pos, secondLastNode.pos);
