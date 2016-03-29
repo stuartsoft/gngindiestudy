@@ -138,82 +138,66 @@ public class Graph
         }
     }
 
-    public List<Node> AStar(int startingNodeKey, int endingNodeKey, List<Node> pathHistory)
+    public List<Node> AStar(int startingNodeKey, int endingNodeKey)
     {
-        //if this is the very first iteration
-        if (pathHistory == null) {
-            pathHistory = new List<Node>();
-            pathHistory.Add(nodes[startingNodeKey]);
-        }
+        List<List<Node>> pathFrontier = new List<List<Node>>();
 
-        Node currentNode = pathHistory[pathHistory.Count - 1];
+        List<Node> startingPath = new List<Node>();
+        startingPath.Add(nodes[startingNodeKey]);
+        pathFrontier.Add(startingPath);
 
-        List<Node> adjNodes = pathHistory[pathHistory.Count - 1].connectedNodes;
-        //remove adjacent nodes that have already been evaluated by this path
-        for (int i = 0; i < adjNodes.Count; i++)
-        {
-            for (int j = 0; j < pathHistory.Count; j++)
-            {
-                if (adjNodes[i].ID == pathHistory[j].ID)
-                {
-                    adjNodes.RemoveAt(i);
-                    i--;//go back because we just removed an index
-                    break;
-                }
-            }
-        }
-
-        if (adjNodes.Count == 0  && pathHistory[pathHistory.Count-1].ID != endingNodeKey)
-        {
-            return new List<Node>();//no more adj node paths to explore from point.
-            //Return empty list because this path doesn't work
-        }
-
-        //score adjacent nodes
-        foreach (Node n in adjNodes)
-        {
-            n.g = currentNode.g + Vector2.Distance(currentNode.pos, n.pos);
-            n.h = Vector2.Distance(n.pos, nodes[endingNodeKey].pos);
-        }
-        //sort adj nodes
-
-        int firstUnsortedIndex = 0;
-        for (int i = 0; i < adjNodes.Count; i++)
+        while(pathFrontier.Count > 0)
         {
             float minVal = 99999;
             int minIndex = 0;
-            for (int j = firstUnsortedIndex; j < adjNodes.Count; j++)
+            //find the best scoring path to further explore
+            for(int i = 0; i < pathFrontier.Count; i++)
             {
-                if (adjNodes[j].f < minVal)
+                int lastIndex = pathFrontier[i].Count-1;
+                if (pathFrontier[i][lastIndex].f < minVal)
                 {
-                    minVal = adjNodes[j].f;
-                    minIndex = j;
+                    minVal = pathFrontier[i][lastIndex].f;
+                    minIndex = i;
                 }
             }
-            //swap the lowest value item to the first unsorted position
-            Node tempNode = adjNodes[firstUnsortedIndex];
-            adjNodes[firstUnsortedIndex] = adjNodes[minIndex];
-            adjNodes[minIndex] = tempNode;
+            //evaluate the best scoring path in our frontier
 
-            firstUnsortedIndex++;
+            List<Node> currentPath = pathFrontier[minIndex];
+            pathFrontier.RemoveAt(minIndex);//remove the path from the frontier, it's children will be added back
+            List<Node> adjNodes = currentPath[currentPath.Count - 1].connectedNodes;
+
+            //remove adjacent nodes that have already been evaluated by this path
+            for (int i = 0; i < adjNodes.Count; i++)
+            {
+                for (int j = 0; j < currentPath.Count; j++)
+                {
+                    if (adjNodes[i].ID == currentPath[j].ID)
+                    {
+                        adjNodes.RemoveAt(i);
+                        i--;//go back because we just removed an index
+                        break;
+                    }
+                }
+            }
+            if (adjNodes.Count != 0)
+            {
+                for (int i = 0; i < adjNodes.Count; i++)
+                {
+                    List<Node> nextPath = currentPath;
+                    nextPath.Add(adjNodes[i]);
+                    Node lastNode = nextPath[nextPath.Count - 1];
+                    Node secondLastNode = nextPath[nextPath.Count - 2];
+                    lastNode.g = secondLastNode.g + Vector2.Distance(lastNode.pos, secondLastNode.pos);
+                    lastNode.h = Vector2.Distance(lastNode.pos, nodes[endingNodeKey].pos);
+                    if (lastNode.h == 0)
+                        return nextPath;//we have our solution!
+                    pathFrontier.Add(nextPath);//otherwise add this path to the frontier of running paths
+                }
+            }
+            //else if adjNodes.Count is 0, the path will be eliminated because it's children are not added back to the frontier
         }
 
-        //actually begin evaluating adjacent positions
-        foreach(Node n in adjNodes)
-        {
-            List<Node> nextPathHistory = pathHistory;
-            nextPathHistory.Add(n);
-
-            //We have reached the goal, end recursion
-            if (nextPathHistory[nextPathHistory.Count - 1].ID == endingNodeKey)
-                return pathHistory;
-            //make the recursive call
-            List<Node> result = AStar(startingNodeKey, endingNodeKey, nextPathHistory);
-            if (result != null && result.Count > 0)
-                return result;//we have a valid result, pass it up the recursive chain
-        }
-
-        return new List<Node>();//no solution found
+        return new List<Node>();
     }
 
 }

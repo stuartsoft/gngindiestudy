@@ -58,7 +58,7 @@ public class Genetic : MonoBehaviour {
     {
         int idA = int.Parse(nodeAtxt.text);
         int idB = int.Parse(nodeBtxt.text);
-        List<Graph.Node> results = displayedGraph.AStar(idA, idB, null);
+        List<Graph.Node> results = displayedGraph.AStar(idA, idB);
         string resultsStr = "";
         for(int i = 0; i < results.Count; i++)
         {
