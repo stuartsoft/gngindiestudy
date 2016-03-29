@@ -5,6 +5,12 @@ using System.Collections.Generic;
 public class Graph
 {
     public Dictionary<int, Node> nodes;
+    float AStarPathSuccess = 0.0f;//fraction of samples that could be maped to nodes and completed with AStar
+    float AStarAvgPathLength = 0.0f;//average path length of successful paths
+
+    public float getAStarPathSuccess() { return AStarPathSuccess; }
+
+    public float getAStarAvgPathLength() { return AStarAvgPathLength; }
 
     public Graph(int initialNodes, List<GameObject> floors, List<GameObject> walls)
     {
@@ -223,6 +229,69 @@ public class Graph
         }
 
         return new List<Node>();
+    }
+
+    public void generateAStarSatisfaction(List<Vector2> startingPoint, List<Vector2> endingPoint)
+    {
+        int successfulPaths = 0;
+        float avgPathLen = 0.0f;
+        for (int i = 0; i < startingPoint.Count; i++)
+        {
+            Node startingNode = closestNodeToPoint(startingPoint[i]);
+            if (startingNode == null)
+                continue;//skip to next iteration if no starting node can be found
+            Node endingNode = closestNodeToPoint(endingPoint[i]);
+            if (endingNode == null)
+                continue;//skip to next iteration if no ending node can be found
+
+            List<Node> path = AStar(startingNode.ID, endingNode.ID);
+            if (path.Count != 0)//if the path was successful
+            {
+                successfulPaths++;
+                avgPathLen += path[path.Count - 1].g + 
+                    Vector2.Distance(startingPoint[i], startingNode.pos) + Vector2.Distance(endingPoint[i], endingNode.pos);
+            }
+        }
+
+        avgPathLen /= successfulPaths;
+
+        //store results
+        AStarAvgPathLength = avgPathLen;
+        AStarPathSuccess = successfulPaths / startingPoint.Count;
+
+    }
+
+    Node closestNodeToPoint(Vector2 point)
+    {
+        //find closest node to the given starting point
+        List<Node> lineOfSightNodes = new List<Node>();
+
+        foreach (KeyValuePair<int, Node> entry in nodes)
+        {
+            if (!Physics.Linecast(new Vector3(point.x, 2, point.y), new Vector3(entry.Value.pos.x, 2, entry.Value.pos.y)))
+            {
+                lineOfSightNodes.Add(entry.Value);
+            }
+        }
+
+        float minDist = 999999;
+        int minIndex = 0;
+
+        if (lineOfSightNodes.Count == 0)
+            return null;//no nodes are line of sight to this point
+
+        for (int j = 0; j < lineOfSightNodes.Count; j++)
+        {
+            float dist = Vector2.Distance(point, lineOfSightNodes[j].pos);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                minIndex = j;
+            }
+        }
+
+        return lineOfSightNodes[minIndex];
+
     }
 
 }

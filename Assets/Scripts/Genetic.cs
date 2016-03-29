@@ -47,14 +47,16 @@ public class Genetic : MonoBehaviour {
 
         displayGraph(displayedGraph);
 
-        gen = new Generation(1, initialGeneration, 0, 0);
+        gen = new Generation(1, initialGeneration, 0, 0, mazeBuilder.floorlst, mazeBuilder.walllst);
+        //gen.getDecendents();//start the process!
+
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            gen = gen.getDecendents();
+            gen.getDecendents();//start the process!
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -117,7 +119,6 @@ public class Genetic : MonoBehaviour {
         edges.Add(temp);
         u1.mEdges.Add(temp);
         u2.mEdges.Add(temp);
-
     }
 
     void displayGraph(Graph g)
