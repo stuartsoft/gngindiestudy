@@ -74,6 +74,7 @@ public class Graph
         public int ID;
         public Vector2 pos;
         public List<Node> connectedNodes;
+        public Node Ancestor;//used in A*
         public float g, h;//public values for temporary use during searching and heuristic analysis
         public float f 
         {
@@ -146,89 +147,90 @@ public class Graph
 
     public List<Node> AStar(int startingNodeKey, int endingNodeKey)
     {
-        List<List<Node>> pathFrontier = new List<List<Node>>();
+        List<Node> ClosedSet = new List<Node>();
+        List<Node> OpenSet = new List<Node>();
+        OpenSet.Add(nodes[startingNodeKey]);
 
-        List<Node> startingPath = new List<Node>();
-        startingPath.Add(nodes[startingNodeKey]);
-        pathFrontier.Add(startingPath);
-
-        while(pathFrontier.Count > 0)
+        foreach(KeyValuePair<int, Node> entry in nodes)
         {
-            float minVal = 99999;
+            entry.Value.g = 99999;//set all g values to infinity
+            entry.Value.Ancestor = null;//set all node ancestors to null
+        }
+
+        while(OpenSet.Count > 0)
+        {
+            float minscore = 99999;
             int minIndex = 0;
-            //find the best scoring path to further explore
-            for(int i = 0; i < pathFrontier.Count; i++)
+            for(int i = 0;i<OpenSet.Count;i++)
             {
-                int lastIndex = pathFrontier[i].Count-1;
-                if (pathFrontier[i][lastIndex].f < minVal)
+                if (OpenSet[i].f < minscore)
                 {
-                    minVal = pathFrontier[i][lastIndex].f;
+                    minscore = OpenSet[i].f;
                     minIndex = i;
                 }
             }
-            //evaluate the best scoring path in our frontier
 
-            List<Node> currentPath = new List<Node>();
-            foreach (Node n in pathFrontier[minIndex])
-            {
-                //deep copy everything except the connected node list
-                Node tempNode = new Node(new Vector2(n.pos.x, n.pos.y), n.ID);
-                tempNode.g = n.g;
-                tempNode.h = n.h;
-                currentPath.Add(tempNode);
-            }
-            pathFrontier.RemoveAt(minIndex);//remove the path from the frontier, it's children will be added back
-            List<int> adjNodeIDs = new List<int>();
-            foreach (Node n in nodes[currentPath[currentPath.Count - 1].ID].connectedNodes)
-            {
-                adjNodeIDs.Add(n.ID);
-            }
+            //deep copy the node with the best score
+            Node currentNode = new Node(new Vector2(OpenSet[minIndex].pos.x, OpenSet[minIndex].pos.y), OpenSet[minIndex].ID);
+            currentNode.g = OpenSet[minIndex].g;
+            currentNode.h = OpenSet[minIndex].h;
+            currentNode.Ancestor = OpenSet[minIndex].Ancestor;
 
-            //remove adjacent nodes that have already been evaluated by this path
-            for (int i = 0; i < adjNodeIDs.Count; i++)
+            //remove this node from the open set
+            OpenSet.RemoveAt(minIndex);
+
+            if (currentNode.ID == endingNodeKey)
             {
-                for (int j = 0; j < currentPath.Count; j++)
+                //build the path list
+                List<Node> fullPath = new List<Node>();
+                Node temp = currentNode;
+                while (temp != null)
                 {
-                    if (adjNodeIDs[i] == currentPath[j].ID)
+                    fullPath.Add(temp);
+                    temp = temp.Ancestor;
+                }
+                return fullPath;
+            }
+
+            OpenSet.Add(currentNode);
+            ClosedSet.Add(currentNode);
+
+            //go through the list of nodes that are connected to the current node
+            foreach(Node n in nodes[currentNode.ID].connectedNodes)
+            {
+                bool skip = false;
+                //check if it's already in the closed set
+                for (int i = 0; i < ClosedSet.Count; i++)
+                {
+                    if (ClosedSet[i].ID == n.ID)
                     {
-                        adjNodeIDs.RemoveAt(i);
-                        i--;//go back because we just removed an index
+                        skip = true;
                         break;
                     }
                 }
-            }
-            if (adjNodeIDs.Count != 0)
-            {
-                for (int i = 0; i < adjNodeIDs.Count; i++)
+                if (skip) continue;
+
+                float tenativeG = n.Ancestor.g + Vector2.Distance(n.pos, n.Ancestor.pos);
+                bool isInOpenSet = false;
+                for (int i = 0; i < OpenSet.Count; i++)
                 {
-                    List<Node> nextPath = new List<Node>();
-                    foreach (Node n in currentPath)
-                    {
-                        //deep copy everything except the connected node list
-                        Node tempNode = new Node(new Vector2(n.pos.x, n.pos.y), n.ID);
-                        tempNode.g = n.g;
-                        tempNode.h = n.h;
-                        nextPath.Add(tempNode);
-                    }
-
-                    Node nextNode = new Node(new Vector2(nodes[adjNodeIDs[i]].pos.x, nodes[adjNodeIDs[i]].pos.y), nodes[adjNodeIDs[i]].ID);
-                    nextNode.g = nodes[adjNodeIDs[i]].g;
-                    nextNode.h = nodes[adjNodeIDs[i]].h;
-                    nextPath.Add(nextNode);
-
-                    Node lastNode = nextPath[nextPath.Count - 1];
-                    Node secondLastNode = nextPath[nextPath.Count - 2];
-                    lastNode.g = secondLastNode.g + Vector2.Distance(lastNode.pos, secondLastNode.pos);
-                    lastNode.h = Vector2.Distance(lastNode.pos, nodes[endingNodeKey].pos);
-                    if (lastNode.h == 0)
-                        return nextPath;//we have our solution!
-                    pathFrontier.Add(nextPath);//otherwise add this path to the frontier of running paths
+                    if (OpenSet[i].ID == n.ID)
+                        isInOpenSet = true;
                 }
-            }
-            //else if adjNodes.Count is 0, the path will be eliminated because it's children are not added back to the frontier
-        }
+                if (!isInOpenSet)
+                    OpenSet.Add(n);
+                else if (tenativeG >= n.g)
+                    continue;
 
+                n.Ancestor = currentNode;
+                n.g = tenativeG;
+                n.h = Vector2.Distance(n.pos, nodes[endingNodeKey].pos);
+            }
+
+        }
+        //didn't find a path
         return new List<Node>();
+
     }
 
     public void generateAStarSatisfaction(List<Vector2> startingPoint, List<Vector2> endingPoint)
