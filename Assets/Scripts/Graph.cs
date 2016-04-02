@@ -149,15 +149,18 @@ public class Graph
     {
         List<Node> ClosedSet = new List<Node>();
         List<Node> OpenSet = new List<Node>();
-        OpenSet.Add(nodes[startingNodeKey]);
 
         foreach(KeyValuePair<int, Node> entry in nodes)
         {
             entry.Value.g = 99999;//set all g values to infinity
             entry.Value.Ancestor = null;//set all node ancestors to null
         }
+        nodes[startingNodeKey].g = 0;
+        nodes[startingNodeKey].h = Vector2.Distance(nodes[startingNodeKey].pos, nodes[endingNodeKey].pos);
 
-        while(OpenSet.Count > 0)
+        OpenSet.Add(nodes[startingNodeKey]);
+
+        while (OpenSet.Count > 0 )
         {
             float minscore = 99999;
             int minIndex = 0;
@@ -176,9 +179,6 @@ public class Graph
             currentNode.h = OpenSet[minIndex].h;
             currentNode.Ancestor = OpenSet[minIndex].Ancestor;
 
-            //remove this node from the open set
-            OpenSet.RemoveAt(minIndex);
-
             if (currentNode.ID == endingNodeKey)
             {
                 //build the path list
@@ -192,25 +192,27 @@ public class Graph
                 return fullPath;
             }
 
-            OpenSet.Add(currentNode);
+            //remove this node from the open set
+            OpenSet.RemoveAt(minIndex);
             ClosedSet.Add(currentNode);
 
             //go through the list of nodes that are connected to the current node
             foreach(Node n in nodes[currentNode.ID].connectedNodes)
             {
-                bool skip = false;
+                bool isInClosedSet = false;
                 //check if it's already in the closed set
                 for (int i = 0; i < ClosedSet.Count; i++)
                 {
                     if (ClosedSet[i].ID == n.ID)
                     {
-                        skip = true;
+                        isInClosedSet = true;
                         break;
                     }
                 }
-                if (skip) continue;
+                if (isInClosedSet)
+                    continue;
 
-                float tenativeG = n.Ancestor.g + Vector2.Distance(n.pos, n.Ancestor.pos);
+                float tenativeG = currentNode.g + Vector2.Distance(n.pos, currentNode.pos);
                 bool isInOpenSet = false;
                 for (int i = 0; i < OpenSet.Count; i++)
                 {
