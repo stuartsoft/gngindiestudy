@@ -48,7 +48,6 @@ public class Genetic : MonoBehaviour {
         displayGraph(displayedGraph);
 
         gen = new Generation(1, initialGeneration, 0, 0, mazeBuilder.floorlst, mazeBuilder.walllst);
-        gen.getDecendents();//start the process!
 
     }
 
@@ -88,6 +87,17 @@ public class Genetic : MonoBehaviour {
                 }
             }
         }
+    }
+
+    //press the ui button to trigger a new generation of graphs and run a full eval and breeding sequence!
+    public void getDecendents()
+    {
+        gen.getDecendents();//start the process!
+
+        //when complete, display the first graph
+        //displayedGraph = initialGeneration[initialGeneration.Count - 1];
+
+        //displayGraph(displayedGraph);
     }
 
     public void TestAStar()
