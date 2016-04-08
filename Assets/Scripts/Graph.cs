@@ -55,7 +55,16 @@ public class Graph
         AStarAvgPathLength = g.getAStarAvgPathLength();
     }
 
-    void connectAllNodes()
+    public string getSummary()
+    {
+        string result = "";
+        result += nodes.Count + "\tNodes\n";
+        result += getAStarPathSuccess() * 100 + "%\tA* Satisfaction\n";
+        result += getAStarAvgPathLength() + "\tUnit avg. A* Path";
+        return result;
+    }
+
+    public void connectAllNodes()
     {
         foreach (KeyValuePair<int,Node> entry in nodes)
         {

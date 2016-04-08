@@ -31,6 +31,15 @@ public class Generation {
         {
             throw new System.Exception("must provide predecessors");
         }
+
+        //do any setup prior to running the full breeding sequence
+        samplePointStart = new List<Vector2>();
+        samplePointEnd = new List<Vector2>();
+        for (int i = 0; i < numAStarPathChecks; i++)
+        {
+            samplePointStart.Add(randPosInMaze());
+            samplePointEnd.Add(randPosInMaze());
+        }
     }
 
     public List<Graph> getPredecessors()
@@ -40,7 +49,6 @@ public class Generation {
 
     public List<Graph> getDecendents()
     {
-        onSetup();
         eval();
         crossover();
         onComplete();
@@ -48,19 +56,7 @@ public class Generation {
         //return new Generation(generationIndex + 1, entities, alpha, beta, floors, walls);
     }
 
-    void onSetup()
-    {
-        samplePointStart = new List<Vector2>();
-        samplePointEnd = new List<Vector2>();
-        for (int i = 0; i < numAStarPathChecks; i++)
-        {
-            samplePointStart.Add(randPosInMaze());
-            samplePointEnd.Add(randPosInMaze());
-        }
-        //do any setup prior to running the full breeding sequence
-    }
-
-    void eval()
+    public void eval()//this is the only public function of the genetic algorithm, so that evals can be presented to the user
     {
         foreach (Graph graph in predecessors)
         {
@@ -155,6 +151,7 @@ public class Generation {
                     parentA.removeNode(nodeA.ID);
                     parentB.removeNode(nodeB.ID);
                 }
+                offspringGraph.connectAllNodes();
                 offspring.Add(offspringGraph);
                 if (offspring.Count == Generation.numEntitiesPerGeneration)
                     break;//we're done, we have enough graphs!

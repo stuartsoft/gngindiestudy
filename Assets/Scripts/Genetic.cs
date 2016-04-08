@@ -9,6 +9,8 @@ public class Genetic : MonoBehaviour {
     public GameObject UnitMarker;
     public GameObject edgeMarker;
     public Material edgeMaterial;
+    public Text graphTitleTxt;
+    public Text graphSummaryTxt;
     public List<GraphUnit> units;
     public List<GraphEdge> edges;
 
@@ -20,6 +22,7 @@ public class Genetic : MonoBehaviour {
 
     Generation gen;
     Graph displayedGraph;
+    int displayedGraphIndex;
 
     Graph.Node nodeSearchA;
     Graph.Node nodeSearchB;
@@ -44,16 +47,38 @@ public class Genetic : MonoBehaviour {
             initialGeneration.Add(tempgraph);
         }
 
-        displayedGraph = initialGeneration[initialGeneration.Count - 1];
-
-        displayGraph(displayedGraph);
-
         gen = new Generation(1, initialGeneration, 0, 0, mazeBuilder.floorlst, mazeBuilder.walllst);
+        gen.eval();//that we have an evaluation of this generation
+
+        displayedGraphIndex = 0;
+        displayGraph(gen.getPredecessors()[displayedGraphIndex]);
+        graphTitleTxt.GetComponent<Text>().text = "Generation " + gen.getGenNum() + ", Graph " + (displayedGraphIndex + 1);
+        graphSummaryTxt.GetComponent<Text>().text = gen.getPredecessors()[displayedGraphIndex].getSummary();
 
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))//display previous graph
+        {
+            displayedGraphIndex--;
+            if (displayedGraphIndex < 0)
+                displayedGraphIndex = gen.getPredecessors().Count - 1;
+            displayGraph(gen.getPredecessors()[displayedGraphIndex]);
+
+            graphTitleTxt.GetComponent<Text>().text = "Generation " + gen.getGenNum() + ", Graph " + (displayedGraphIndex + 1);
+            graphSummaryTxt.GetComponent<Text>().text = gen.getPredecessors()[displayedGraphIndex].getSummary();
+
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {//display next graph
+            displayedGraphIndex++;
+            if (displayedGraphIndex > gen.getPredecessors().Count - 1)
+                displayedGraphIndex = 0;
+            displayGraph(gen.getPredecessors()[displayedGraphIndex]);
+            graphTitleTxt.GetComponent<Text>().text = "Generation " + gen.getGenNum() + ", Graph " + (displayedGraphIndex + 1);
+            graphSummaryTxt.GetComponent<Text>().text = gen.getPredecessors()[displayedGraphIndex].getSummary();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             gen.getDecendents();//start the process!
@@ -96,9 +121,8 @@ public class Genetic : MonoBehaviour {
         List<Graph> offspring = gen.getDecendents();//start the process!
         gen = new Generation(gen.getGenNum(),offspring, 0, 0, mazeBuilder.floorlst, mazeBuilder.walllst);
         //when complete, display the first graph
-        displayedGraph = gen.getPredecessors()[0];
-
-        displayGraph(displayedGraph);
+        displayedGraphIndex = 0;
+        displayGraph(gen.getPredecessors()[displayedGraphIndex]);
     }
 
     public void TestAStar()

@@ -118,7 +118,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 317, y: 87}
+  m_SizeDelta: {x: 225, y: 65}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &121314337
 MonoBehaviour:
@@ -214,7 +214,7 @@ GameObject:
   - 222: {fileID: 189309988}
   - 114: {fileID: 189309987}
   m_Layer: 5
-  m_Name: Text
+  m_Name: graphSummaryTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,7 +235,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 10, y: 10}
-  m_SizeDelta: {x: 250, y: 65}
+  m_SizeDelta: {x: 215, y: 55}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &189309987
 MonoBehaviour:
@@ -269,7 +269,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "500\tNodes\n750 \tEdges\n2% \tA* Satisfaction\n40 \tUnit avg. A* Path"
+  m_Text: "500\tNodes\n2% \tA* Satisfaction\n40 \tUnit avg. A* Path"
 --- !u!222 &189309988
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -665,7 +665,7 @@ GameObject:
   - 222: {fileID: 816235281}
   - 114: {fileID: 816235280}
   m_Layer: 5
-  m_Name: Text
+  m_Name: graphTitleTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1172,6 +1172,8 @@ MonoBehaviour:
   UnitMarker: {fileID: 129982, guid: 03c25e169a5dcf74789c6fda5be4b01c, type: 2}
   edgeMarker: {fileID: 100416, guid: 1a6e34b1eed7f87458ea3c2fbc11dfd0, type: 2}
   edgeMaterial: {fileID: 2100000, guid: 3f1e6b195d8f398418baef554e0ed0ac, type: 2}
+  graphTitleTxt: {fileID: 816235280}
+  graphSummaryTxt: {fileID: 189309987}
   mazeBuilder: {fileID: 1520456645}
   camera: {fileID: 587924167}
 --- !u!1 &1590800327
