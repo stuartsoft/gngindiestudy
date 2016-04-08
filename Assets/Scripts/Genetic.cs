@@ -8,6 +8,7 @@ public class Genetic : MonoBehaviour {
     public float UnitHeight = 1;
     public GameObject UnitMarker;
     public GameObject edgeMarker;
+    public Material edgeMaterial;
     public List<GraphUnit> units;
     public List<GraphEdge> edges;
 
@@ -125,7 +126,7 @@ public class Genetic : MonoBehaviour {
 
     void connectNodes(GraphUnit u1, GraphUnit u2)
     {
-        GraphEdge temp = new GraphEdge(u1, u2);
+        GraphEdge temp = new GraphEdge(u1, u2, edgeMaterial);
         edges.Add(temp);
         u1.mEdges.Add(temp);
         u2.mEdges.Add(temp);
@@ -188,7 +189,7 @@ public class Genetic : MonoBehaviour {
 
     public class GraphEdge
     {
-        public GraphEdge(GraphUnit pointA, GraphUnit pointB)
+        public GraphEdge(GraphUnit pointA, GraphUnit pointB, Material mat)
         {
             mAge = 0;
             mPointA = pointA;
@@ -196,8 +197,8 @@ public class Genetic : MonoBehaviour {
             mDrawnLine = new GameObject();
             mDrawnLine.AddComponent<LineRenderer>();
             mDrawnLine.GetComponent<LineRenderer>().SetWidth(0.2f, 0.2f);
-            mDrawnLine.GetComponent<LineRenderer>().material = new Material(Shader.Find("Transparent/Diffuse"));
-            mDrawnLine.GetComponent<LineRenderer>().SetColors(Color.black, Color.black);
+            mDrawnLine.GetComponent<LineRenderer>().material = mat;
+            //mDrawnLine.GetComponent<LineRenderer>().SetColors(Color.black, Color.black);
             mDrawnLine.transform.parent = pointA.mDrawnUnit.transform;
         }
 
