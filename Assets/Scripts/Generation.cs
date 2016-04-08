@@ -16,7 +16,6 @@ public class Generation {
     int alpha;
     float beta;
 
-
     List<GameObject> floors;
     List<GameObject> walls;
 
@@ -39,11 +38,13 @@ public class Generation {
         return predecessors;
     }
 
-    public void getDecendents()
+    public List<Graph> getDecendents()
     {
         onSetup();
         eval();
         crossover();
+        onComplete();
+        return offspring;//all grown up!
         //return new Generation(generationIndex + 1, entities, alpha, beta, floors, walls);
     }
 
@@ -187,6 +188,11 @@ public class Generation {
         Vector2 rndPosInTile = new Vector2(Random.Range(0, mc.bounds.size.x), Random.Range(0, mc.bounds.size.z));
         Vector2 rndWorldPos = xyWorldSpaceBoundsBottomLeft + rndPosInTile;
         return rndWorldPos;
+    }
+
+    public int getGenNum()
+    {
+        return generationIndex;
     }
     
 }

@@ -92,12 +92,12 @@ public class Genetic : MonoBehaviour {
     //press the ui button to trigger a new generation of graphs and run a full eval and breeding sequence!
     public void getDecendents()
     {
-        gen.getDecendents();//start the process!
-
+        List<Graph> offspring = gen.getDecendents();//start the process!
+        gen = new Generation(gen.getGenNum(),offspring, 0, 0, mazeBuilder.floorlst, mazeBuilder.walllst);
         //when complete, display the first graph
-        //displayedGraph = initialGeneration[initialGeneration.Count - 1];
+        displayedGraph = gen.getPredecessors()[0];
 
-        //displayGraph(displayedGraph);
+        displayGraph(displayedGraph);
     }
 
     public void TestAStar()
@@ -197,7 +197,7 @@ public class Genetic : MonoBehaviour {
             mDrawnLine.AddComponent<LineRenderer>();
             mDrawnLine.GetComponent<LineRenderer>().SetWidth(0.2f, 0.2f);
             mDrawnLine.GetComponent<LineRenderer>().material = new Material(Shader.Find("Transparent/Diffuse"));
-            mDrawnLine.GetComponent<LineRenderer>().SetColors(Color.yellow, Color.yellow);
+            mDrawnLine.GetComponent<LineRenderer>().SetColors(Color.black, Color.black);
             mDrawnLine.transform.parent = pointA.mDrawnUnit.transform;
         }
 
