@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Generation {
 
-    List<Graph> entities;
+    List<Graph> offspring;
     List<Graph> predecessors;
     List<Vector2> samplePointStart;
     List<Vector2> samplePointEnd;
@@ -71,20 +71,12 @@ public class Generation {
     {
         int graphPairsToSelect = 1;
 
-        entities = new List<Graph>();
-
         //sort graphs by score
         //selection sort
         int minIndex = 0;
         float minVal = 99999;
-
-        for (int i = 0; i < predecessors.Count; i++)
-        {
-            Debug.Log(predecessors[i].getCompositeScore());
-        }
-
-        Debug.Log("------------------");
-
+        
+        //selection sort of scored predecessors
         for (int i = 0; i < predecessors.Count; i++)
         {
             minVal = 99999;
@@ -109,18 +101,65 @@ public class Generation {
             }
         }
 
-        //to do FIX BUG CAUSING LAST GRAPH TO SOMETIMES BE OUT OF THE CORRECT ORDER
-
-        for (int i = 0; i < predecessors.Count; i++)
-        {
-            Debug.Log(predecessors[i].getCompositeScore());
-        }
-        
         //build new graphs until we have a new generation
-        //while (entities.Count < numEntitiesPerGeneration)
-        //{
+        offspring = new List<Graph>();
+        while (offspring.Count < Generation.numEntitiesPerGeneration)//do this until we have enough graphs for the next generation
+        {
+            for (int i = 0;i< graphPairsToSelect*2; i+=2)//loop through the number of desired pairs of graphs, starting with the best scoring
+            {
+                int newMaxID = predecessors[i].getMaxID();
+                if (predecessors[i + 1].getMaxID() > newMaxID)
+                    newMaxID = predecessors[i + 1].getMaxID();
+                Graph offspringGraph = new Graph(newMaxID);
+
+                Graph parentA = new Graph(predecessors[i]);//deep copy parents
+                Graph parentB = new Graph(predecessors[i+1]);
+
+                for (int j = 0; j < Graph.numNodes; j++)//fill this new graph with nodes from parentA and parentB
+                {
+                    //randomly select node from first graph
+                    int rndIndexA = Random.Range(0, parentA.nodes.Count);
+                    Graph.Node nodeA = new Graph.Node(Vector2.zero, 0);
+                    int index = 0;
+                    //retrieve the node at the random index of the dictionary
+                    foreach(KeyValuePair<int, Graph.Node> entry in parentA.nodes)
+                    {
+                        if (index == rndIndexA)
+                        {
+                            nodeA = entry.Value;
+                            return;
+                        }
+                        index++;
+                    }
+
+                    int rndIndexB = Random.Range(0, parentB.nodes.Count);
+                    Graph.Node nodeB = new Graph.Node(Vector2.zero, 0);
+                    index = 0;
+                    //retrieve the node at the random index of the dictionary
+                    foreach (KeyValuePair<int, Graph.Node> entry in parentB.nodes)
+                    {
+                        if (index == rndIndexB)
+                        {
+                            nodeB = entry.Value;
+                            return;
+                        }
+                        index++;
+                    }
+
+                    //add the randomly selected nodes to our new graph
+                    offspringGraph.addNewNode(new Vector2(nodeA.pos.x, nodeA.pos.y), offspringGraph.getMaxID()+1);
+                    offspringGraph.addNewNode(new Vector2(nodeB.pos.x, nodeB.pos.y), offspringGraph.getMaxID()+1);
+
+                    //remove these nodes from the graph pool in the parents now that they've been included here
+                    parentA.removeNode(nodeA.ID);
+                    parentB.removeNode(nodeB.ID);
+                }
+                offspring.Add(offspringGraph);
+                if (offspring.Count == Generation.numEntitiesPerGeneration)
+                    break;//we're done, we have enough graphs!
+            }
             //for loop through our top graph pairs and make some babies!
-        //}        
+        }        
 
     ///!!!
     }

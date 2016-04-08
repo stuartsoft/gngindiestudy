@@ -14,6 +14,14 @@ public class Graph
     public float getAStarAvgPathLength() { return AStarAvgPathLength; }
     public float getCompositeScore() { return AStarPathSuccess; }//a weighted, composite score of all evaluated attributes of this graph
 
+    public int newNodeStartingID = 0;
+
+    public Graph(int startingID)
+    {
+        newNodeStartingID = startingID;
+        nodes = new Dictionary<int, Node>();
+    }
+
     public Graph(int initialNodes, List<GameObject> floors, List<GameObject> walls)
     {
         nodes = new Dictionary<int, Node>();
@@ -74,17 +82,16 @@ public class Graph
         return nodes.Count;
     }
 
-    public int maxID
+    public int getMaxID()
     {
-        get
+        int temp = 0;
+        foreach (KeyValuePair<int, Node> entry in nodes)
         {
-            int temp = 0;
-            foreach (KeyValuePair<int, Node> entry in nodes)
-            {
-                if (entry.Value.ID > temp) temp = entry.Value.ID;
-            }
-            return temp;
+            if (entry.Value.ID > temp) temp = entry.Value.ID;
         }
+        if (temp < newNodeStartingID)
+            return newNodeStartingID;
+        return temp;
     }
 
     public class Node
@@ -133,9 +140,16 @@ public class Graph
 
     public Node addNewNode(Vector2 pos)
     {
-        int newID = getFirstUnusedID();
+        int newID = this.getMaxID()+1;//get the new id from the maxID property
         Node tempNode = new Node(pos, newID);
         nodes.Add(newID, tempNode);
+        return tempNode;
+    }
+
+    public Node addNewNode(Vector2 pos, int ID)
+    {
+        Node tempNode = new Node(pos, ID);
+        nodes.Add(ID, tempNode);
         return tempNode;
     }
 
