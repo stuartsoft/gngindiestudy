@@ -66,7 +66,7 @@ public class Generation {
 
     void crossover()
     {
-        int graphPairsToSelect = 1;
+        int graphPairsToSelect = 1;//how many pairs of parents
 
         //sort graphs by score
         //selection sort
@@ -112,7 +112,7 @@ public class Generation {
                 Graph parentA = new Graph(predecessors[i]);//deep copy parents
                 Graph parentB = new Graph(predecessors[i+1]);
 
-                for (int j = 0; j < Graph.numNodes; j++)//fill this new graph with nodes from parentA and parentB
+                for (int j = 0; j < Graph.numNodes/2; j++)//fill this new graph with nodes from parentA and parentB
                 {
                     //randomly select node from first graph
                     int rndIndexA = Random.Range(0, parentA.nodes.Count);
@@ -124,7 +124,7 @@ public class Generation {
                         if (index == rndIndexA)
                         {
                             nodeA = entry.Value;
-                            return;
+                            break;
                         }
                         index++;
                     }
@@ -138,7 +138,7 @@ public class Generation {
                         if (index == rndIndexB)
                         {
                             nodeB = entry.Value;
-                            return;
+                            break;
                         }
                         index++;
                     }
