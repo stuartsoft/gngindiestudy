@@ -4,13 +4,15 @@ using System.Collections.Generic;
 
 public class Graph
 {
+    public static int numNodes = 500;//Constant for the number of nodes to build in each graph
+
     public Dictionary<int, Node> nodes;
     float AStarPathSuccess = 0.0f;//fraction of samples that could be maped to nodes and completed with AStar
     float AStarAvgPathLength = 0.0f;//average path length of successful paths
 
     public float getAStarPathSuccess() { return AStarPathSuccess; }
-
     public float getAStarAvgPathLength() { return AStarAvgPathLength; }
+    public float getCompositeScore() { return AStarPathSuccess; }//a weighted, composite score of all evaluated attributes of this graph
 
     public Graph(int initialNodes, List<GameObject> floors, List<GameObject> walls)
     {
@@ -27,6 +29,22 @@ public class Graph
         }
 
         connectAllNodes();
+    }
+
+    public Graph(Graph g)//deep copy constructor
+    {
+        nodes = new Dictionary<int, Node>();
+        //deep copy        
+
+        foreach (KeyValuePair<int, Node> entry in g.nodes)
+        {
+            //deep copy the node with the best score
+            Node currentNode = new Node(new Vector2(entry.Value.pos.x, entry.Value.pos.y), entry.Value.ID);
+            //don't bother copying the A* and heuristic stuff for each node, it's just going to be re-crunched later
+            nodes.Add(currentNode.ID, currentNode);
+        }
+        AStarPathSuccess = g.getAStarPathSuccess();
+        AStarAvgPathLength = g.getAStarAvgPathLength();
     }
 
     void connectAllNodes()

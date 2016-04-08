@@ -39,7 +39,7 @@ public class Genetic : MonoBehaviour {
 
         for (int i = 0; i < Generation.numEntitiesPerGeneration; i++)
         {
-            Graph tempgraph = new Graph(500, mazeBuilder.floorlst, mazeBuilder.walllst);
+            Graph tempgraph = new Graph(Graph.numNodes, mazeBuilder.floorlst, mazeBuilder.walllst);
             initialGeneration.Add(tempgraph);
         }
 
