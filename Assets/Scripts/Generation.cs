@@ -45,7 +45,7 @@ public class Generation {
     {
         samplePointStart = new List<Vector2>();
         samplePointEnd = new List<Vector2>();
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 1000; i++)
         {
             samplePointStart.Add(randPosInMaze());
             samplePointEnd.Add(randPosInMaze());
