@@ -118,7 +118,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 225, y: 65}
+  m_SizeDelta: {x: 345, y: 88}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &121314337
 MonoBehaviour:
@@ -235,7 +235,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 10, y: 10}
-  m_SizeDelta: {x: 215, y: 55}
+  m_SizeDelta: {x: 335, y: 78}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &189309987
 MonoBehaviour:
@@ -258,10 +258,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 18
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 6
     m_AlignByGeometry: 0
@@ -425,8 +425,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 316049097}
-  m_LocalRotation: {x: 0.70436114, y: -0.16842547, z: -0.16305718, w: 0.67001545}
-  m_LocalPosition: {x: 6.45, y: 22.24, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: -0.00000005960466, z: -0.00000002980233, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 22.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -686,7 +686,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 313, y: 40}
+  m_SizeDelta: {x: 313, y: 60}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &816235280
 MonoBehaviour:
@@ -709,10 +709,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1172,6 +1172,10 @@ MonoBehaviour:
   UnitMarker: {fileID: 129982, guid: 03c25e169a5dcf74789c6fda5be4b01c, type: 2}
   edgeMarker: {fileID: 100416, guid: 1a6e34b1eed7f87458ea3c2fbc11dfd0, type: 2}
   edgeMaterial: {fileID: 2100000, guid: 3f1e6b195d8f398418baef554e0ed0ac, type: 2}
+  InheritedNodeMaterial: {fileID: 2100000, guid: 6a4c157f1e92ce045b6df4ae05f4806b,
+    type: 2}
+  NonInheritedNodeMaterial: {fileID: 2100000, guid: 03eb461a06adea34e85b66189ddebbe5,
+    type: 2}
   graphTitleTxt: {fileID: 816235280}
   graphSummaryTxt: {fileID: 189309987}
   mazeBuilder: {fileID: 1520456645}
@@ -1209,7 +1213,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 0, y: 40}
+  m_SizeDelta: {x: 0, y: 60}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1590800329
 MonoBehaviour:

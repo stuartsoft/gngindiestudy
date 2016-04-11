@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Graph
 {
-    public static int numNodes = 750;//Constant for the number of nodes to build in each graph
+    public static int initNumNodes = 750;//Constant for the number of nodes to build in the first set of graphs
 
     public Dictionary<int, Node> nodes;
     float AStarPathSuccess = 0.0f;//fraction of samples that could be maped to nodes and completed with AStar
@@ -22,10 +22,10 @@ public class Graph
         nodes = new Dictionary<int, Node>();
     }
 
-    public Graph(int initialNodes, List<GameObject> floors, List<GameObject> walls)
+    public Graph(List<GameObject> floors, List<GameObject> walls)
     {
         nodes = new Dictionary<int, Node>();
-        for (int i = 0; i < initialNodes; i++)
+        for (int i = 0; i < initNumNodes; i++)
         {
             int rndTile = Random.Range(0, floors.Count);
             //get the 2d bounding area for any floor tile
@@ -47,7 +47,7 @@ public class Graph
         foreach (KeyValuePair<int, Node> entry in g.nodes)
         {
             //deep copy the node with the best score
-            Node currentNode = new Node(new Vector2(entry.Value.pos.x, entry.Value.pos.y), entry.Value.ID);
+            Node currentNode = new Node(new Vector2(entry.Value.pos.x, entry.Value.pos.y), entry.Value.ID, false);
             //don't bother copying the A* and heuristic stuff for each node, it's just going to be re-crunched later
             nodes.Add(currentNode.ID, currentNode);
         }
@@ -108,6 +108,7 @@ public class Graph
         public int ID;
         public Vector2 pos;
         public List<Node> connectedNodes;
+        bool inheritedFromParent;
         public Node Ancestor;//used in A*
         public float g, h;//public values for temporary use during searching and heuristic analysis
         public float f 
@@ -116,11 +117,17 @@ public class Graph
             private set { }
         }
 
-        public Node(Vector2 position, int id)
+        public bool isNodeInheritedFromParent()
+        {
+            return inheritedFromParent;
+        }
+
+        public Node(Vector2 position, int id, bool inherited)
         {
             connectedNodes = new List<Node>();
             pos = position;
             ID = id;
+            inheritedFromParent = inherited;
         }
 
         public void connectTo(Node node)
@@ -150,14 +157,21 @@ public class Graph
     public Node addNewNode(Vector2 pos)
     {
         int newID = this.getMaxID()+1;//get the new id from the maxID property
-        Node tempNode = new Node(pos, newID);
+        Node tempNode = new Node(pos, newID, false);
         nodes.Add(newID, tempNode);
         return tempNode;
     }
 
     public Node addNewNode(Vector2 pos, int ID)
     {
-        Node tempNode = new Node(pos, ID);
+        Node tempNode = new Node(pos, ID, false);
+        nodes.Add(ID, tempNode);
+        return tempNode;
+    }
+
+    public Node addNewNode(Vector2 pos, int ID, bool inherited)
+    {
+        Node tempNode = new Node(pos, ID, inherited);
         nodes.Add(ID, tempNode);
         return tempNode;
     }
@@ -215,7 +229,7 @@ public class Graph
             }
 
             //deep copy the node with the best score
-            Node currentNode = new Node(new Vector2(OpenSet[minIndex].pos.x, OpenSet[minIndex].pos.y), OpenSet[minIndex].ID);
+            Node currentNode = new Node(new Vector2(OpenSet[minIndex].pos.x, OpenSet[minIndex].pos.y), OpenSet[minIndex].ID, false);
             currentNode.g = OpenSet[minIndex].g;
             currentNode.h = OpenSet[minIndex].h;
             currentNode.Ancestor = OpenSet[minIndex].Ancestor;

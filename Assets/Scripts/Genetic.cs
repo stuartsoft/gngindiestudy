@@ -9,6 +9,8 @@ public class Genetic : MonoBehaviour {
     public GameObject UnitMarker;
     public GameObject edgeMarker;
     public Material edgeMaterial;
+    public Material InheritedNodeMaterial;
+    public Material NonInheritedNodeMaterial;
     public Text graphTitleTxt;
     public Text graphSummaryTxt;
     public List<GraphUnit> units;
@@ -43,7 +45,7 @@ public class Genetic : MonoBehaviour {
 
         for (int i = 0; i < Generation.numEntitiesPerGeneration; i++)
         {
-            Graph tempgraph = new Graph(Graph.numNodes, mazeBuilder.floorlst, mazeBuilder.walllst);
+            Graph tempgraph = new Graph(mazeBuilder.floorlst, mazeBuilder.walllst);
             initialGeneration.Add(tempgraph);
         }
 
@@ -83,6 +85,7 @@ public class Genetic : MonoBehaviour {
 
         if (Input.GetMouseButtonDown(0))
         {
+            /*
             Ray mouseRay = camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(mouseRay, out hit, int.MaxValue))
@@ -109,6 +112,7 @@ public class Genetic : MonoBehaviour {
                     }
                 }
             }
+            */
         }
     }
 
@@ -140,9 +144,9 @@ public class Genetic : MonoBehaviour {
         nodeSearchB = null;
     }
 
-    GraphUnit addNode(int id, Vector2 pos)
+    GraphUnit addNode(int id, Vector2 pos, bool inherited)
     {
-        GraphUnit point = new GraphUnit(new Vector3(pos.x, UnitHeight, pos.y ),id, UnitMarker, nodeGameObjects);
+        GraphUnit point = new GraphUnit(new Vector3(pos.x, UnitHeight, pos.y ),id, UnitMarker, nodeGameObjects, inherited, NonInheritedNodeMaterial, InheritedNodeMaterial);
         units.Add(point);
         return point;
     }
@@ -176,7 +180,7 @@ public class Genetic : MonoBehaviour {
         foreach (KeyValuePair<int, Graph.Node> entry in g.nodes)
         {
             Vector2 setPos = new Vector2((entry.Value.pos.x - 0.5f), (entry.Value.pos.y - 0.5f));
-            GraphUnit u = addNode(entry.Key, entry.Value.pos);
+            GraphUnit u = addNode(entry.Key, entry.Value.pos, entry.Value.isNodeInheritedFromParent());
         }
 
         //connect all node game objects
@@ -238,12 +242,16 @@ public class Genetic : MonoBehaviour {
 
     public class GraphUnit
     {
-        public GraphUnit(Vector3 center, int id, GameObject UnitMarker, GameObject Parent)
+        public GraphUnit(Vector3 center, int id, GameObject UnitMarker, GameObject Parent, bool inherited, Material nonInheritedMat, Material InheritedMat)
         {
             mCenter = center;
             mDrawnUnit = Object.Instantiate<GameObject>(UnitMarker); //THIS NEEDS TO BE CHANGED LATER
             mDrawnUnit.name = "Node: " + id.ToString();
             mDrawnUnit.transform.position = mCenter;
+            if (!inherited)
+                mDrawnUnit.GetComponent<MeshRenderer>().material = nonInheritedMat;
+            else
+                mDrawnUnit.GetComponent<MeshRenderer>().material = InheritedMat;
             mEdges = new List<GraphEdge>();
             mError = 0.0f;
             ID = id;

@@ -10,6 +10,7 @@ public class Generation {
     List<Vector2> samplePointEnd;
     public static int numEntitiesPerGeneration = 5;//Constant for the number of graphs to build in each generation
     public static int numAStarPathChecks = 1000;//number of random start and end pairs to generate and check during the evaluation phase
+    public static int nodeGrowthRate = 20;
 
     int finalGeneration;
     int generationIndex;
@@ -105,6 +106,8 @@ public class Generation {
 
         //build new graphs until we have a new generation
         offspring = new List<Graph>();
+        int numNodesFromParents;//number of nodes to recieve from both parents total
+
         while (offspring.Count < Generation.numEntitiesPerGeneration)//do this until we have enough graphs for the next generation
         {
             for (int i = 0;i< graphPairsToSelect*2; i+=2)//loop through the number of desired pairs of graphs, starting with the best scoring
@@ -116,6 +119,7 @@ public class Generation {
 
                 Graph parentA = new Graph(predecessors[i]);//deep copy parents
                 Graph parentB = new Graph(predecessors[i+1]);
+                numNodesFromParents = parentA.nodes.Count;
 
                 //remove nodes that have no adj nodes, we don't want these to be passed down
                 foreach(KeyValuePair<int, Graph.Node> entry in predecessors[i].nodes)
@@ -137,11 +141,11 @@ public class Generation {
                     }
                 }
 
-                for (int j = 0; j < Graph.numNodes/2; j++)//fill this new graph with nodes from parentA and parentB
+                for (int j = 0; j < numNodesFromParents/2; j++)//fill this new graph with nodes from parentA and parentB
                 {
                     //randomly select node from first graph
                     int rndIndexA = Random.Range(0, parentA.nodes.Count);
-                    Graph.Node nodeA = new Graph.Node(Vector2.zero, 0);
+                    Graph.Node nodeA = new Graph.Node(Vector2.zero, 0, false);
                     int index = 0;
                     //retrieve the node at the random index of the dictionary
                     foreach(KeyValuePair<int, Graph.Node> entry in parentA.nodes)
@@ -155,7 +159,7 @@ public class Generation {
                     }
 
                     int rndIndexB = Random.Range(0, parentB.nodes.Count);
-                    Graph.Node nodeB = new Graph.Node(Vector2.zero, 0);
+                    Graph.Node nodeB = new Graph.Node(Vector2.zero, 0, false);
                     index = 0;
                     //retrieve the node at the random index of the dictionary
                     foreach (KeyValuePair<int, Graph.Node> entry in parentB.nodes)
@@ -169,8 +173,8 @@ public class Generation {
                     }
 
                     //add the randomly selected nodes to our new graph
-                    offspringGraph.addNewNode(new Vector2(nodeA.pos.x, nodeA.pos.y), offspringGraph.getMaxID()+1);
-                    offspringGraph.addNewNode(new Vector2(nodeB.pos.x, nodeB.pos.y), offspringGraph.getMaxID()+1);
+                    offspringGraph.addNewNode(new Vector2(nodeA.pos.x, nodeA.pos.y), offspringGraph.getMaxID()+1, true);
+                    offspringGraph.addNewNode(new Vector2(nodeB.pos.x, nodeB.pos.y), offspringGraph.getMaxID()+1, true);
 
                     //remove these nodes from the graph pool in the parents now that they've been included here
                     parentA.removeNode(nodeA.ID);
@@ -180,8 +184,8 @@ public class Generation {
                     if (parentA.nodes.Count == 0 || parentB.nodes.Count == 0)
                         break;
                 }
-                
-                while(offspringGraph.nodes.Count < Graph.numNodes)//if we don't have enough nodes after breeding, fill in with some new randomly placed nodes
+
+                while(offspringGraph.nodes.Count < (numNodesFromParents + nodeGrowthRate))//if we don't have enough nodes after breeding, fill in with some new randomly placed nodes
                 {
                     //Debug.Log("Adding new random node");
                     int rndTile = Random.Range(0, floors.Count);
