@@ -70,31 +70,31 @@ public class Generation {
 
         //sort graphs by score
         //selection sort
-        int minIndex = 0;
-        float minVal = 99999;
+        int maxIndex = 0;
+        float maxVal = 99999;
         
         //selection sort of scored predecessors
         for (int i = 0; i < predecessors.Count; i++)
         {
-            minVal = 99999;
-            minIndex = i;
+            maxVal = 0;
+            maxIndex = i;
             for (int j = i; j < predecessors.Count; j++)
             {
-                if (predecessors[j].getCompositeScore() < minVal)
+                if (predecessors[j].getCompositeScore() > maxVal)
                 {
-                    minIndex = j;
-                    minVal = predecessors[j].getCompositeScore();
+                    maxIndex = j;
+                    maxVal = predecessors[j].getCompositeScore();
                 }
             }
-            if (minIndex != i)
+            if (maxIndex != i)
             {
                 //swap lowest element into position
                 Graph swapthisout = new Graph(predecessors[i]);
-                Graph minElement = new Graph(predecessors[minIndex]);
+                Graph minElement = new Graph(predecessors[maxIndex]);
                 predecessors.RemoveAt(i);
                 predecessors.Insert(i, minElement);
-                predecessors.RemoveAt(minIndex);
-                predecessors.Insert(minIndex, swapthisout);
+                predecessors.RemoveAt(maxIndex);
+                predecessors.Insert(maxIndex, swapthisout);
             }
         }
 
