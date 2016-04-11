@@ -8,14 +8,15 @@ public class Generation {
     List<Graph> predecessors;
     List<Vector2> samplePointStart;
     List<Vector2> samplePointEnd;
-    public static int numEntitiesPerGeneration = 5;//Constant for the number of graphs to build in each generation
-    public static int numAStarPathChecks = 1000;//number of random start and end pairs to generate and check during the evaluation phase
-    public static int nodeGrowthRate = 20;
+    public static int numEntitiesPerGeneration = 10;//Constant for the number of graphs to build in each generation
+    public static int numAStarPathChecks = 750;//number of random start and end pairs to generate and check during the evaluation phase
+    public static int nodeGrowthRate = 25;
 
     int finalGeneration;
     int generationIndex;
     int alpha;
     float beta;
+    bool hasBeenEvaluated;
 
     List<GameObject> floors;
     List<GameObject> walls;
@@ -41,6 +42,8 @@ public class Generation {
             samplePointStart.Add(randPosInMaze());
             samplePointEnd.Add(randPosInMaze());
         }
+
+        hasBeenEvaluated = false;
     }
 
     public List<Graph> getPredecessors()
@@ -50,7 +53,8 @@ public class Generation {
 
     public List<Graph> getDecendents()
     {
-        eval();
+        if (!hasBeenEvaluated)
+            eval();
         crossover();
         onComplete();
         return offspring;//all grown up!
@@ -59,6 +63,7 @@ public class Generation {
 
     public void eval()//this is the only public function of the genetic algorithm, so that evals can be presented to the user
     {
+        hasBeenEvaluated = true;
         foreach (Graph graph in predecessors)
         {
             graph.generateAStarSatisfaction(samplePointStart, samplePointEnd);
@@ -121,6 +126,7 @@ public class Generation {
                 Graph parentB = new Graph(predecessors[i+1]);
                 numNodesFromParents = parentA.nodes.Count;
 
+                /*
                 //remove nodes that have no adj nodes, we don't want these to be passed down
                 foreach(KeyValuePair<int, Graph.Node> entry in predecessors[i].nodes)
                 {
@@ -140,6 +146,7 @@ public class Generation {
                         //Debug.Log("Removed single node " + entry.Value.ID);
                     }
                 }
+                */
 
                 for (int j = 0; j < numNodesFromParents/2; j++)//fill this new graph with nodes from parentA and parentB
                 {
