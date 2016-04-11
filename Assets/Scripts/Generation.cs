@@ -66,7 +66,7 @@ public class Generation {
 
     void crossover()
     {
-        int graphPairsToSelect = 1;//how many pairs of parents
+        int graphPairsToSelect = 2;//how many pairs of parents
 
         //sort graphs by score
         //selection sort
@@ -98,6 +98,11 @@ public class Generation {
             }
         }
 
+        foreach(Graph g in predecessors)
+        {
+            g.connectAllNodes();//reconnect after sort
+        }
+
         //build new graphs until we have a new generation
         offspring = new List<Graph>();
         while (offspring.Count < Generation.numEntitiesPerGeneration)//do this until we have enough graphs for the next generation
@@ -111,6 +116,26 @@ public class Generation {
 
                 Graph parentA = new Graph(predecessors[i]);//deep copy parents
                 Graph parentB = new Graph(predecessors[i+1]);
+
+                //remove nodes that have no adj nodes, we don't want these to be passed down
+                foreach(KeyValuePair<int, Graph.Node> entry in predecessors[i].nodes)
+                {
+                    if (entry.Value.connectedNodes.Count == 0)//look up from predecessors since deep copy does not clone the connected node list
+                    {
+                        //remove the node from parentA
+                        parentA.removeNode(entry.Value.ID);
+                        //Debug.Log("Removed single node " + entry.Value.ID);
+                    }
+                }
+                foreach (KeyValuePair<int, Graph.Node> entry in predecessors[i+1].nodes)
+                {
+                    if (entry.Value.connectedNodes.Count == 0)//look up from predecessors since deep copy does not clone the connected node list
+                    {
+                        //remove the node from parentA
+                        parentB.removeNode(entry.Value.ID);
+                        //Debug.Log("Removed single node " + entry.Value.ID);
+                    }
+                }
 
                 for (int j = 0; j < Graph.numNodes/2; j++)//fill this new graph with nodes from parentA and parentB
                 {
@@ -150,7 +175,24 @@ public class Generation {
                     //remove these nodes from the graph pool in the parents now that they've been included here
                     parentA.removeNode(nodeA.ID);
                     parentB.removeNode(nodeB.ID);
+
+                    //check that parentA & parentB both have enough nodes left to give, otherwise we can fill in the gaps with new randomly palced nodes
+                    if (parentA.nodes.Count == 0 || parentB.nodes.Count == 0)
+                        break;
                 }
+                
+                while(offspringGraph.nodes.Count < Graph.numNodes)//if we don't have enough nodes after breeding, fill in with some new randomly placed nodes
+                {
+                    //Debug.Log("Adding new random node");
+                    int rndTile = Random.Range(0, floors.Count);
+                    //get the 2d bounding area for any floor tile
+                    MeshCollider mc = floors[rndTile].GetComponent<MeshCollider>();
+                    Vector2 xyWorldSpaceBoundsBottomLeft = new Vector2(mc.bounds.center.x - mc.bounds.size.x / 2, mc.bounds.center.z - mc.bounds.size.z / 2);
+                    Vector2 rndPosInTile = new Vector2(Random.Range(0, mc.bounds.size.x), Random.Range(0, mc.bounds.size.z));
+                    Vector2 rndWorldPos = xyWorldSpaceBoundsBottomLeft + rndPosInTile;
+                    Graph.Node n = offspringGraph.addNewNode(rndWorldPos);
+                }
+                
                 offspringGraph.connectAllNodes();
                 offspring.Add(offspringGraph);
                 if (offspring.Count == Generation.numEntitiesPerGeneration)
