@@ -8,9 +8,10 @@ public class Generation {
     List<Graph> predecessors;
     List<Vector2> samplePointStart;
     List<Vector2> samplePointEnd;
-    public static int numEntitiesPerGeneration = 10;//Constant for the number of graphs to build in each generation
-    public static int numAStarPathChecks = 750;//number of random start and end pairs to generate and check during the evaluation phase
+    public static int numEntitiesPerGeneration = 2;//Constant for the number of graphs to build in each generation
+    public static int numAStarPathChecks = 1000;//number of random start and end pairs to generate and check during the evaluation phase
     public static int nodeGrowthRate = 0;
+    public static float precentToReplace = 0.1f;//precentage (as fraction) of population to remove and replace with fresh nodes
 
     int finalGeneration;
     int generationIndex;
@@ -126,7 +127,7 @@ public class Generation {
                 Graph parentB = new Graph(predecessors[i+1]);
                 numNodesFromParents = parentA.nodes.Count;
 
-                for (int j = 0; j < (numNodesFromParents/2) - (numNodesFromParents*0.05f); j++)//fill this new graph with nodes from parentA and parentB
+                for (int j = 0; j < ((numNodesFromParents*(1-precentToReplace))/2); j++)//fill this new graph with nodes from parentA and parentB
                 {
                     //randomly select node from first graph
                     int rndIndexA = Random.Range(0, parentA.nodes.Count);
