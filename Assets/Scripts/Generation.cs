@@ -10,7 +10,7 @@ public class Generation {
     List<Vector2> samplePointEnd;
     public static int numEntitiesPerGeneration = 10;//Constant for the number of graphs to build in each generation
     public static int numAStarPathChecks = 750;//number of random start and end pairs to generate and check during the evaluation phase
-    public static int nodeGrowthRate = 25;
+    public static int nodeGrowthRate = 0;
 
     int finalGeneration;
     int generationIndex;
@@ -126,29 +126,7 @@ public class Generation {
                 Graph parentB = new Graph(predecessors[i+1]);
                 numNodesFromParents = parentA.nodes.Count;
 
-                /*
-                //remove nodes that have no adj nodes, we don't want these to be passed down
-                foreach(KeyValuePair<int, Graph.Node> entry in predecessors[i].nodes)
-                {
-                    if (entry.Value.connectedNodes.Count == 0)//look up from predecessors since deep copy does not clone the connected node list
-                    {
-                        //remove the node from parentA
-                        parentA.removeNode(entry.Value.ID);
-                        //Debug.Log("Removed single node " + entry.Value.ID);
-                    }
-                }
-                foreach (KeyValuePair<int, Graph.Node> entry in predecessors[i+1].nodes)
-                {
-                    if (entry.Value.connectedNodes.Count == 0)//look up from predecessors since deep copy does not clone the connected node list
-                    {
-                        //remove the node from parentA
-                        parentB.removeNode(entry.Value.ID);
-                        //Debug.Log("Removed single node " + entry.Value.ID);
-                    }
-                }
-                */
-
-                for (int j = 0; j < numNodesFromParents/2; j++)//fill this new graph with nodes from parentA and parentB
+                for (int j = 0; j < (numNodesFromParents/2) - (numNodesFromParents*0.05f); j++)//fill this new graph with nodes from parentA and parentB
                 {
                     //randomly select node from first graph
                     int rndIndexA = Random.Range(0, parentA.nodes.Count);
@@ -192,7 +170,7 @@ public class Generation {
                         break;
                 }
 
-                while(offspringGraph.nodes.Count < (numNodesFromParents + nodeGrowthRate))//if we don't have enough nodes after breeding, fill in with some new randomly placed nodes
+                while(offspringGraph.nodes.Count < (numNodesFromParents))//fill in with some new randomly placed nodes
                 {
                     //Debug.Log("Adding new random node");
                     int rndTile = Random.Range(0, floors.Count);
