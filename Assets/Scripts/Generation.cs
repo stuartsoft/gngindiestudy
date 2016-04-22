@@ -177,7 +177,8 @@ public class Generation {
                 }
 
                 int k = 0;
-                while(k< Graph.normDistRand(1.2f, 0.1f) * (1 - P) * numNodesFromParents) {
+                float numNewNodes = Graph.normDistRand(1.2f, 0.1f) * (1 - P) * numNodesFromParents;
+                while (k< numNewNodes) {
                 //while(offspringGraph.nodes.Count < numNodesFromParents){//fill in with some new randomly placed nodes
                 
                     k++;
@@ -188,7 +189,7 @@ public class Generation {
                     Vector2 xyWorldSpaceBoundsBottomLeft = new Vector2(mc.bounds.center.x - mc.bounds.size.x / 2, mc.bounds.center.z - mc.bounds.size.z / 2);
                     Vector2 rndPosInTile = new Vector2(Random.Range(0, mc.bounds.size.x), Random.Range(0, mc.bounds.size.z));
                     Vector2 rndWorldPos = xyWorldSpaceBoundsBottomLeft + rndPosInTile;
-                    Graph.Node n = offspringGraph.addNewNode(rndWorldPos);
+                    offspringGraph.addNewNode(rndWorldPos);
                 }
                 
                 offspringGraph.connectAllNodes();
