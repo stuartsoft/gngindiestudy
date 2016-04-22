@@ -13,6 +13,7 @@ public class Genetic : MonoBehaviour {
     public Material NonInheritedNodeMaterial;
     public Text graphTitleTxt;
     public Text graphSummaryTxt;
+    public Text generationSummaryTxt;
     public List<GraphUnit> units;
     public List<GraphEdge> edges;
 
@@ -171,6 +172,7 @@ public class Genetic : MonoBehaviour {
     {
         graphTitleTxt.GetComponent<Text>().text = "Generation " + gen.getGenNum() + ", Graph " + (displayedGraphIndex + 1);
         graphSummaryTxt.GetComponent<Text>().text = gen.getPredecessors()[displayedGraphIndex].getSummary();
+        generationSummaryTxt.GetComponent<Text>().text = gen.getSummary();
     }
 
     void displayGraph(Graph g)

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Graph
 {
-    public static int initNumNodes = 75;//Constant for the number of nodes to build in the first set of graphs
+    public static int initNumNodes = 20;//Constant for the number of nodes to build in the first set of graphs
 
     public Dictionary<int, Node> nodes;
     float AStarPathSuccess = 0.0f;//fraction of samples that could be maped to nodes and completed with AStar

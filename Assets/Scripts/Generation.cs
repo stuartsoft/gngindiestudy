@@ -8,8 +8,8 @@ public class Generation {
     List<Graph> predecessors;
     List<Vector2> samplePointStart;
     List<Vector2> samplePointEnd;
-    public static int numEntitiesPerGeneration = 10;//Constant for the number of graphs to build in each generation
-    public static int numAStarPathChecks = 250;//number of random start and end pairs to generate and check during the evaluation phase
+    public static int numEntitiesPerGeneration = 200;//Constant for the number of graphs to build in each generation
+    public static int numAStarPathChecks = 100;//number of random start and end pairs to generate and check during the evaluation phase
     public static int nodeGrowthRate = 0;
     public static float precentToReplace = 0.1f;//precentage (as fraction) of population to remove and replace with fresh nodes
 
@@ -221,6 +221,27 @@ public class Generation {
         Vector2 rndPosInTile = new Vector2(Random.Range(0, mc.bounds.size.x), Random.Range(0, mc.bounds.size.z));
         Vector2 rndWorldPos = xyWorldSpaceBoundsBottomLeft + rndPosInTile;
         return rndWorldPos;
+    }
+
+    public string getSummary()
+    {
+        string result = "";
+        result += getPredecessors().Count + " Predecessors\n";
+        result += bestAStarSatisfaction() * 100 + "%\tBest A* Satisfaction\n";
+        return result;
+    }
+
+    float bestAStarSatisfaction()
+    {
+        float best = 0.0f;
+        if (!hasBeenEvaluated)
+            eval();
+        for (int i = 0; i < predecessors.Count; i++)
+        {
+            if (predecessors[i].getAStarPathSuccess() > best)
+                best = predecessors[i].getAStarPathSuccess();
+        }
+        return best;
     }
 
     public int getGenNum()
