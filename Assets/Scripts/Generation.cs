@@ -8,8 +8,8 @@ public class Generation {
     List<Graph> predecessors;
     List<Vector2> samplePointStart;
     List<Vector2> samplePointEnd;
-    public static int numEntitiesPerGeneration = 2;//Constant for the number of graphs to build in each generation
-    public static int numAStarPathChecks = 1000;//number of random start and end pairs to generate and check during the evaluation phase
+    public static int numEntitiesPerGeneration = 10;//Constant for the number of graphs to build in each generation
+    public static int numAStarPathChecks = 500;//number of random start and end pairs to generate and check during the evaluation phase
     public static int nodeGrowthRate = 0;
     public static float precentToReplace = 0.1f;//precentage (as fraction) of population to remove and replace with fresh nodes
 
@@ -125,6 +125,11 @@ public class Generation {
 
                 Graph parentA = new Graph(predecessors[i]);//deep copy parents
                 Graph parentB = new Graph(predecessors[i+1]);
+
+                float P = parentA.getAStarPathSuccess();
+                if (parentB.getAStarPathSuccess() > P)
+                    P = parentB.getAStarPathSuccess();
+
                 numNodesFromParents = parentA.nodes.Count;
 
                 for (int j = 0; j < ((numNodesFromParents*(1-precentToReplace))/2); j++)//fill this new graph with nodes from parentA and parentB
@@ -171,8 +176,11 @@ public class Generation {
                         break;
                 }
 
-                while(offspringGraph.nodes.Count < (numNodesFromParents))//fill in with some new randomly placed nodes
-                {
+                int k = 0;
+                while(k< Graph.normDistRand(1.2f, 0.1f) * (1 - P) * numNodesFromParents) {
+                //while(offspringGraph.nodes.Count < numNodesFromParents){//fill in with some new randomly placed nodes
+                
+                    k++;
                     //Debug.Log("Adding new random node");
                     int rndTile = Random.Range(0, floors.Count);
                     //get the 2d bounding area for any floor tile
@@ -192,11 +200,6 @@ public class Generation {
         }        
 
     ///!!!
-    }
-
-    void selection()
-    {
-
     }
 
     void mutate()

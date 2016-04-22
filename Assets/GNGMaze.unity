@@ -589,7 +589,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 60
+  orthographic size: 40
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -610,7 +610,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 587924163}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 60, y: 50, z: 60}
+  m_LocalPosition: {x: 25, y: 50, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a347b04f5a59f6a4a9dcb0f43eed6824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeText: {fileID: 4900000, guid: 60129702cb24428448c0ccef7dea295f, type: 3}
+  mazeText: {fileID: 4900000, guid: c95a71b4acab50947bc4fb9c058ac600, type: 3}
   floorTile: {fileID: 100416, guid: 1a6e34b1eed7f87458ea3c2fbc11dfd0, type: 2}
   wallTile: {fileID: 172398, guid: 343dd0c2565ab204e96642306d63e8e2, type: 2}
   floors: {fileID: 0}

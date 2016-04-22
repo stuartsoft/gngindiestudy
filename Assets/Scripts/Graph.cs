@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Graph
 {
-    public static int initNumNodes = 5000;//Constant for the number of nodes to build in the first set of graphs
+    public static int initNumNodes = 100;//Constant for the number of nodes to build in the first set of graphs
 
     public Dictionary<int, Node> nodes;
     float AStarPathSuccess = 0.0f;//fraction of samples that could be maped to nodes and completed with AStar
@@ -55,7 +55,7 @@ public class Graph
         AStarAvgPathLength = g.getAStarAvgPathLength();
     }
 
-    public float normDistRand(float mean, float stdDev)
+    public static float normDistRand(float mean, float stdDev)
     {
         float u1 = Random.Range(0, 1.0f);
         float u2 = Random.Range(0, 1.0f);

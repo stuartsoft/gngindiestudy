@@ -20,6 +20,7 @@ public class Genetic : MonoBehaviour {
     GameObject nodeGameObjects;
 
     public BuildMaze mazeBuilder;
+
     public Camera camera;
 
     Generation gen;
@@ -60,6 +61,8 @@ public class Genetic : MonoBehaviour {
 
     void Update()
     {
+        //camera.transform.position = transform.position;
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))//display previous graph
         {
             displayedGraphIndex--;
@@ -81,6 +84,11 @@ public class Genetic : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             gen.getDecendents();//start the process!
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            getDecendents();
         }
 
         if (Input.GetMouseButtonDown(0))
