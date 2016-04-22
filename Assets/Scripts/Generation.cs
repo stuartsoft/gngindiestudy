@@ -9,7 +9,7 @@ public class Generation {
     List<Vector2> samplePointStart;
     List<Vector2> samplePointEnd;
     public static int numEntitiesPerGeneration = 10;//Constant for the number of graphs to build in each generation
-    public static int numAStarPathChecks = 500;//number of random start and end pairs to generate and check during the evaluation phase
+    public static int numAStarPathChecks = 250;//number of random start and end pairs to generate and check during the evaluation phase
     public static int nodeGrowthRate = 0;
     public static float precentToReplace = 0.1f;//precentage (as fraction) of population to remove and replace with fresh nodes
 

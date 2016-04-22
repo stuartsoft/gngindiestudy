@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Graph
 {
-    public static int initNumNodes = 100;//Constant for the number of nodes to build in the first set of graphs
+    public static int initNumNodes = 75;//Constant for the number of nodes to build in the first set of graphs
 
     public Dictionary<int, Node> nodes;
     float AStarPathSuccess = 0.0f;//fraction of samples that could be maped to nodes and completed with AStar
@@ -66,9 +66,20 @@ public class Graph
     public string getSummary()
     {
         string result = "";
-        result += nodes.Count + "\tNodes\n";
+        result += nodes.Count + "\tNodes\t(" + getNumOfNewlyAddedNodes() + " new)\n";
         result += getAStarPathSuccess() * 100 + "%\tA* Satisfaction\n";
-        result += getAStarAvgPathLength() + "\tUnit avg. A* Path";
+        result += getAStarAvgPathLength() + "\tUnit avg. A* Path\n";
+        return result;
+    }
+
+    int getNumOfNewlyAddedNodes()
+    {
+        int result = 0;
+        foreach (KeyValuePair<int, Node> entry in nodes)
+        {
+            if (entry.Value.isNodeInheritedFromParent() == false)
+                result++;
+        }
         return result;
     }
 
