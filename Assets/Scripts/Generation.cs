@@ -177,7 +177,7 @@ public class Generation {
                 }
 
                 int k = 0;
-                float numNewNodes = Graph.normDistRand(1.2f, 0.1f) * (1 - P) * numNodesFromParents;
+                float numNewNodes = Graph.normDistRand(0.2f, 0.1f) * (1 - P) * numNodesFromParents;
                 while (k< numNewNodes) {
                 //while(offspringGraph.nodes.Count < numNodesFromParents){//fill in with some new randomly placed nodes
                 
