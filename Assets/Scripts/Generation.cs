@@ -69,6 +69,37 @@ public class Generation {
         {
             graph.generateAStarSatisfaction(samplePointStart, samplePointEnd);
         }
+
+        //sort generational data now that it has been evaluated
+        //List<Graph> newpredecessors = new List<Graph>();
+        for (int i = 0; i < predecessors.Count-1; i++)
+        {
+            float maxScore = predecessors[i].getCompositeScore();
+            int maxIndex = i;
+            for (int j = i + 1; j < predecessors.Count; j++)
+            {
+                if (predecessors[j].getCompositeScore() > maxScore)
+                {
+                    maxIndex = j;
+                    maxScore = predecessors[j].getCompositeScore();
+                }
+            }
+
+            if (maxIndex == i)
+                continue;
+
+            Graph G1 = new Graph(predecessors[i]);
+            Graph G2 = new Graph(predecessors[maxIndex]);
+            G1.connectAllNodes();
+            G2.connectAllNodes();
+
+            predecessors.RemoveAt(i);
+            predecessors.Insert(i, G2);
+            predecessors.RemoveAt(maxIndex);
+            predecessors.Add(G1);
+
+        }
+
     }
 
     void crossover()
