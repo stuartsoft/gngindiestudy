@@ -1,0 +1,391 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.2)  2 MAY 2016 15:52
+entering extended mode
+**./geneticalgorithm.tex
+(geneticalgorithm.tex
+LaTeX2e <2015/10/01> patch level 2
+Babel <3.9n> and hyphenation patterns for 69 languages loaded.
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.c
+ls"
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.cl
+o"
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\layouts\layout
+s.sty"
+Package: layouts 2009/09/02 v2.6d graphical depiction of document elements
+\l@ylen=\skip43
+\layoutsbox=\box26
+\l@youtunitlength=\skip44
+\l@youtlinethick=\skip45
+\l@youtlinethickii=\skip46
+\l@ysetupparskip=\skip47
+\l@ysetupbaselineskip=\skip48
+\l@yonem=\skip49
+\l@yonex=\skip50
+\l@ylmarg=\skip51
+\l@yrmarg=\skip52
+\l@yitmindent=\skip53
+\l@ylblwidth=\skip54
+\l@ylblsep=\skip55
+\l@ylparindent=\skip56
+\l@ytsep=\skip57
+\l@ypskip=\skip58
+\l@yptsep=\skip59
+\l@ypsep=\skip60
+\l@yitmsep=\skip61
+\l@ytok=\toks14
+\l@youtpw=\count87
+\l@youtph=\count88
+\l@youthpi=\count89
+\l@youthpii=\count90
+\l@youthpiii=\count91
+\l@youthpiv=\count92
+\l@youthpv=\count93
+\l@youthpvi=\count94
+\l@youthpvii=\count95
+\l@youtparskip=\count96
+\l@youtvpi=\count97
+\l@youtvpii=\count98
+\l@youtvpiii=\count99
+\l@youtvpiv=\count100
+\l@youtvpv=\count101
+\l@youtvpvi=\count102
+\l@youtvpvii=\count103
+\l@youthdo=\count104
+\l@youthdi=\count105
+\l@youthdii=\count106
+\l@youthdiii=\count107
+\l@youthdiv=\count108
+\l@youthdv=\count109
+\l@youthdvi=\count110
+\l@youthdvii=\count111
+\l@youtvdo=\count112
+\l@youtvdi=\count113
+\l@youtvdii=\count114
+\l@youtvdiii=\count115
+\l@youtvdiv=\count116
+\l@youtvdv=\count117
+\l@youtvdvi=\count118
+\l@youtvdvii=\count119
+\l@youtvdviii=\count120
+\l@youtxci=\count121
+\l@youtxcii=\count122
+\l@youtxciii=\count123
+\l@youtxciv=\count124
+\l@youtxcv=\count125
+\l@youtxcvi=\count126
+\l@youtyci=\count127
+\l@youtycii=\count128
+\l@youtyciii=\count129
+\l@youtyciv=\count130
+\l@youtycv=\count131
+\l@youtycvi=\count132
+\l@youtycvii=\count133
+\l@youtycviii=\count134
+\l@youtxco=\count135
+\l@youtyco=\count136
+\l@ytempdima=\skip62
+\stockwidth=\skip63
+\stockheight=\skip64
+\trimedge=\skip65
+\trimtop=\skip66
+\uppermargin=\skip67
+\spinemargin=\skip68
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geome
+try.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyva
+l.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifp
+df.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifv
+tex.sty"
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxe
+tex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count137
+\Gm@cntv=\count138
+\c@Gm@tempcnt=\count139
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@layoutwidth=\dimen107
+\Gm@layoutheight=\dimen108
+\Gm@layouthoffset=\dimen109
+\Gm@layoutvoffset=\dimen110
+\Gm@dimlist=\toks16
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geome
+try.cfg"))
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lipsum\lipsum.
+sty"
+Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
+\c@lips@count=\count140
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listi
+ngs.sty"
+\lst@mode=\count141
+\lst@gtempboxa=\box27
+\lst@token=\toks17
+\lst@length=\count142
+\lst@currlwidth=\dimen111
+\lst@column=\count143
+\lst@pos=\count144
+\lst@lostspace=\dimen112
+\lst@width=\dimen113
+\lst@newlines=\count145
+\lst@lineno=\count146
+\lst@maxwidth=\dimen114
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmi
+sc.sty"
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count147
+\lst@skipnumbers=\count148
+\lst@framebox=\box28
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listi
+ngs.cfg"
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graph
+icx.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graph
+ics.sty"
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.
+sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\graph
+ics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 94.
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdftex-def\pdf
+tex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\inf
+warerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltx
+cmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count149
+))
+\Gin@req@height=\dimen115
+\Gin@req@width=\dimen116
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstla
+ng1.sty"
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstla
+ng1.sty"
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmi
+sc.sty"
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+) (geneticalgorithm.aux)
+\openout1 = `geneticalgorithm.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+
+
+Package layouts Warning: Layout scale set to 0.5 on input line 21.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=4.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumntrue
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\c@lstlisting=\count150
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pd
+f.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count151
+\scratchdimen=\dimen117
+\scratchbox=\box29
+\nofMPsegments=\count152
+\nofMParguments=\count153
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count154
+\MPscratchDim=\dimen118
+\MPnumerator=\count155
+\makeMPintoPDFobject=\count156
+\everyMPtoPDFconversion=\toks19
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 24.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 24.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 24.
+ (intro.tex
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 9.
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd
+"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 9.
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+) (implementation.tex) (results.tex) (end.tex
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+
+Underfull \hbox (badness 1460) in paragraph at lines 4--5
+\OT1/cmr/m/n/10 Al-go-rithm for Be-gin-ners [Blog]. Avail-able:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+\OT1/cmr/m/n/10 http://www.theprojectspot.com/tutorial-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+\OT1/cmr/m/n/10 post/creating-a-genetic-algorithm-for-
+ []
+
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+[1{C:/Users/bowmanrs1/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+
+
+])
+[2
+
+] (geneticalgorithm.aux) ) 
+Here is how much of TeX's memory you used:
+ 3355 strings out of 493634
+ 48205 string characters out of 3133608
+ 260468 words of memory out of 3000000
+ 6726 multiletter control sequences out of 15000+200000
+ 7280 words of font info for 26 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 33i,7n,58p,640b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bowmanrs1/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bowmanrs1/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
+Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr17.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb>
+Output written on geneticalgorithm.pdf (2 pages, 70595 bytes).
+PDF statistics:
+ 29 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
