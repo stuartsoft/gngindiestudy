@@ -261,8 +261,9 @@ public class Generation {
     {
         string result = "";
         result += getPredecessors().Count + " Predecessors\n";
-        result += bestAStarSatisfaction() * 100 + "%\tBest A* Satisfaction\n";
-        result += bestAStarPathLength() + " best A* Avg Path Len\n";
+        result += predecessors[0].nodes.Count + "\t Nodes\n";
+        result += predecessors[0].getAStarPathSuccess() * 100 + "%\tBest graph A* Sat\n";
+        result += predecessors[0].getAStarAvgPathLength() + " Best Graph A* avg len\n";
         return result;
     }
 
@@ -275,19 +276,6 @@ public class Generation {
         {
             if (predecessors[i].getAStarPathSuccess() > best)
                 best = predecessors[i].getAStarPathSuccess();
-        }
-        return best;
-    }
-
-    float bestAStarPathLength()
-    {
-        float best = 0.0f;
-        if (!hasBeenEvaluated)
-            eval();
-        for (int i = 0; i < predecessors.Count; i++)
-        {
-            if (predecessors[i].getAStarAvgPathLength() > best)
-                best = predecessors[i].getAStarAvgPathLength();
         }
         return best;
     }

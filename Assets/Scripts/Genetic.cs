@@ -92,6 +92,26 @@ public class Genetic : MonoBehaviour {
             getDecendents();
         }
 
+        for (int i = 1; i < 9; i++)
+        {
+            if (Input.GetKeyDown(i.ToString()))
+            {
+                for (int j = 0;j< i; j++)
+                {
+                    getDecendents();
+                }
+                break;
+            }
+        }
+
+        if (Input.GetKeyDown(0.ToString()))
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                getDecendents();
+            }
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             /*
