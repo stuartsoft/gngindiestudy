@@ -1,1 +1,18 @@
-asdf
+Gen 1
+200 Predecessors
+13%	Best A* Satisfaction
+33.78098 best A* Avg Path Len
+
+----------
+Gen 2
+200 Predecessors
+19%	Best A* Satisfaction
+14.28019 best A* Avg Path Len
+
+----------
+Gen 3
+200 Predecessors
+18%	Best A* Satisfaction
+15.15848 best A* Avg Path Len
+
+----------
