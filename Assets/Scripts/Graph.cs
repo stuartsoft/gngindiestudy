@@ -47,7 +47,8 @@ public class Graph
         foreach (KeyValuePair<int, Node> entry in g.nodes)
         {
             //deep copy the node with the best score
-            Node currentNode = new Node(new Vector2(entry.Value.pos.x, entry.Value.pos.y), entry.Value.ID, false);
+            bool inherited = entry.Value.isNodeInheritedFromParent();
+            Node currentNode = new Node(new Vector2(entry.Value.pos.x, entry.Value.pos.y), entry.Value.ID, inherited);
             //don't bother copying the A* and heuristic stuff for each node, it's just going to be re-crunched later
             nodes.Add(currentNode.ID, currentNode);
         }
