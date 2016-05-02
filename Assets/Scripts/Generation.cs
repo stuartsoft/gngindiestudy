@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 
 public class Generation {
 
@@ -99,6 +100,8 @@ public class Generation {
             predecessors.Add(G1);
 
         }
+
+        writeGeneration();
 
     }
 
@@ -279,5 +282,17 @@ public class Generation {
     {
         return generationIndex;
     }
-    
+
+
+    private void writeGeneration()
+    {
+        if (getGenNum() == 1)
+        {
+            //delte log file
+            File.Delete(Application.dataPath + "/test.txt");
+        }
+        Debug.Log(Application.dataPath + "/test.txt");
+        File.AppendAllText(Application.dataPath + "/test.txt", "asdf\n");
+    }
+
 }
