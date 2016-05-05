@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class Graph
 {
-    public static int initNumNodes = 20;//Constant for the number of nodes to build in the first set of graphs
-
     public Dictionary<int, Node> nodes;
     float AStarPathSuccess = 0.0f;//fraction of samples that could be maped to nodes and completed with AStar
     float AStarAvgPathLength = 0.0f;//average path length of successful paths
@@ -22,7 +20,7 @@ public class Graph
         nodes = new Dictionary<int, Node>();
     }
 
-    public Graph(List<GameObject> floors, List<GameObject> walls)
+    public Graph(List<GameObject> floors, List<GameObject> walls, int initNumNodes = 20)
     {
         nodes = new Dictionary<int, Node>();
         for (int i = 0; i < initNumNodes; i++)

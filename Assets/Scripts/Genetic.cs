@@ -17,6 +17,8 @@ public class Genetic : MonoBehaviour {
     public List<GraphUnit> units;
     public List<GraphEdge> edges;
 
+    int GraphInitalNodes = 20;
+
     GameObject graphGameObject;
     GameObject nodeGameObjects;
 
@@ -47,7 +49,7 @@ public class Genetic : MonoBehaviour {
 
         for (int i = 0; i < Generation.numEntitiesPerGeneration; i++)
         {
-            Graph tempgraph = new Graph(mazeBuilder.floorlst, mazeBuilder.walllst);
+            Graph tempgraph = new Graph(mazeBuilder.floorlst, mazeBuilder.walllst, GraphInitalNodes);
             initialGeneration.Add(tempgraph);
         }
 
@@ -148,10 +150,30 @@ public class Genetic : MonoBehaviour {
     //press the ui button to trigger a new generation of graphs and run a full eval and breeding sequence!
     public void getDecendents()
     {
+        //getNewDecendents();
+        //return;
+
         List<Graph> offspring = gen.getDecendents();//start the process!
         gen = new Generation(gen.getGenNum()+1,offspring, 0, 0, mazeBuilder.floorlst, mazeBuilder.walllst);
         gen.eval();
         //when complete, display the first graph
+        displayedGraphIndex = 0;
+        displayGraph(gen.getPredecessors()[displayedGraphIndex]);
+        updateGraphUI();
+    }
+
+    public void getNewDecendents()
+    {
+        List<Graph> initialGeneration = new List<Graph>();
+        GraphInitalNodes += 10;
+        for (int i = 0; i < Generation.numEntitiesPerGeneration; i++)
+        {
+            Graph tempgraph = new Graph(mazeBuilder.floorlst, mazeBuilder.walllst, GraphInitalNodes);
+            initialGeneration.Add(tempgraph);
+        }
+
+        gen = new Generation(gen.getGenNum()+1, initialGeneration, 0, 0, mazeBuilder.floorlst, mazeBuilder.walllst);
+        gen.eval();//that we have an evaluation of this generation
         displayedGraphIndex = 0;
         displayGraph(gen.getPredecessors()[displayedGraphIndex]);
         updateGraphUI();
