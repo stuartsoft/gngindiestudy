@@ -1,7 +1,7 @@
 Gen 1
 200 Predecessors
 20	 Nodes
-11%	Best graph A* Sat
-7.427903 Best Graph A* avg len
+10%	Best graph A* Sat
+8.342082 Best Graph A* avg len
 
 ----------

@@ -147,9 +147,21 @@ public class Genetic : MonoBehaviour {
         }
     }
 
+    public void screenshot()
+    {
+        string fname = System.DateTime.Now.ToString();
+        fname = fname.Replace(' ', '_');
+        fname = fname.Replace(':', '_');
+        fname = fname.Replace('/', '_');
+        fname = Application.dataPath + "/" + fname + ".png";
+        Debug.Log(fname);
+        Application.CaptureScreenshot(fname);
+    }
+
     //press the ui button to trigger a new generation of graphs and run a full eval and breeding sequence!
     public void getDecendents()
     {
+        //uncommment to build new generation each time without inheritance
         //getNewDecendents();
         //return;
 
@@ -162,6 +174,8 @@ public class Genetic : MonoBehaviour {
         updateGraphUI();
     }
 
+    //creates a fresh generation that does not inherit from previous generation.\
+    //Graph size will grow by a static amount
     public void getNewDecendents()
     {
         List<Graph> initialGeneration = new List<Graph>();
