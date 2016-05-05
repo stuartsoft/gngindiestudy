@@ -261,7 +261,7 @@ public class Generation {
     {
         string result = "";
         result += getPredecessors().Count + " Predecessors\n";
-        result += predecessors[0].nodes.Count + "\t Nodes\n";
+        result += predecessors[0].nodes.Count + "\t Best graph Nodes\n";
         result += predecessors[0].getAStarPathSuccess() * 100 + "%\tBest graph A* Sat\n";
         result += predecessors[0].getAStarAvgPathLength() + " Best Graph A* avg len\n";
         return result;
