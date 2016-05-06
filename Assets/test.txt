@@ -1,105 +1,105 @@
 Gen 1
 200 Predecessors
-20	 Nodes
-11%	Best graph A* Sat
-10.84699 Best Graph A* avg len
+20	 Best graph Nodes
+12%	Best graph A* Sat
+11.0144 Best Graph A* avg len
 
 ----------
 Gen 2
 200 Predecessors
-23	 Nodes
-13%	Best graph A* Sat
-8.942852 Best Graph A* avg len
+23	 Best graph Nodes
+12%	Best graph A* Sat
+8.897819 Best Graph A* avg len
 
 ----------
 Gen 3
 200 Predecessors
-29	 Nodes
-11%	Best graph A* Sat
-6.503351 Best Graph A* avg len
+28	 Best graph Nodes
+21%	Best graph A* Sat
+5.898372 Best Graph A* avg len
 
 ----------
 Gen 4
 200 Predecessors
-36	 Nodes
-25%	Best graph A* Sat
-6.340048 Best Graph A* avg len
+33	 Best graph Nodes
+23%	Best graph A* Sat
+6.989069 Best Graph A* avg len
 
 ----------
 Gen 5
 200 Predecessors
-42	 Nodes
-26%	Best graph A* Sat
-6.25362 Best Graph A* avg len
+43	 Best graph Nodes
+29%	Best graph A* Sat
+6.281064 Best Graph A* avg len
 
 ----------
 Gen 6
 200 Predecessors
-48	 Nodes
-35%	Best graph A* Sat
-6.446056 Best Graph A* avg len
+49	 Best graph Nodes
+31%	Best graph A* Sat
+6.527133 Best Graph A* avg len
 
 ----------
 Gen 7
 200 Predecessors
-54	 Nodes
-27%	Best graph A* Sat
-5.236703 Best Graph A* avg len
+59	 Best graph Nodes
+34%	Best graph A* Sat
+5.494165 Best Graph A* avg len
 
 ----------
 Gen 8
 200 Predecessors
-59	 Nodes
+66	 Best graph Nodes
 44%	Best graph A* Sat
-4.074631 Best Graph A* avg len
+5.009958 Best Graph A* avg len
 
 ----------
 Gen 9
 200 Predecessors
-82	 Nodes
-38%	Best graph A* Sat
-3.67738 Best Graph A* avg len
+75	 Best graph Nodes
+40%	Best graph A* Sat
+3.574799 Best Graph A* avg len
 
 ----------
 Gen 10
 200 Predecessors
-74	 Nodes
-57%	Best graph A* Sat
-4.171742 Best Graph A* avg len
+80	 Best graph Nodes
+46%	Best graph A* Sat
+4.372428 Best Graph A* avg len
 
 ----------
 Gen 11
 200 Predecessors
-101	 Nodes
-69%	Best graph A* Sat
-3.17556 Best Graph A* avg len
+91	 Best graph Nodes
+39%	Best graph A* Sat
+3.501474 Best Graph A* avg len
 
 ----------
 Gen 12
 200 Predecessors
-102	 Nodes
-96%	Best graph A* Sat
-3.086372 Best Graph A* avg len
+100	 Best graph Nodes
+49%	Best graph A* Sat
+2.776418 Best Graph A* avg len
 
 ----------
 Gen 13
 200 Predecessors
-94	 Nodes
-71%	Best graph A* Sat
-4.400515 Best Graph A* avg len
+84	 Best graph Nodes
+42%	Best graph A* Sat
+3.434798 Best Graph A* avg len
 
 ----------
 Gen 14
 200 Predecessors
-100	 Nodes
-79%	Best graph A* Sat
-3.303606 Best Graph A* avg len
+96	 Best graph Nodes
+52%	Best graph A* Sat
+2.69506 Best Graph A* avg len
 
 ----------
 Gen 15
 200 Predecessors
-92	 Nodes
-99%	Best graph A* Sat
-3.085895 Best Graph A* avg len
+104	 Best graph Nodes
+60%	Best graph A* Sat
+2.672146 Best Graph A* avg len
 
 ----------

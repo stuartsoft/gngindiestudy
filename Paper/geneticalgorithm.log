@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.2)  2 MAY 2016 15:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.2)  6 MAY 2016 01:17
 entering extended mode
 **./geneticalgorithm.tex
 (geneticalgorithm.tex
@@ -333,59 +333,40 @@ Missing character: There is no ú in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
-) (implementation.tex) (results.tex) (end.tex
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-
-Underfull \hbox (badness 1460) in paragraph at lines 4--5
-\OT1/cmr/m/n/10 Al-go-rithm for Be-gin-ners [Blog]. Avail-able:
- []
+) (implementation.tex [1{C:/Users/bowmanrs1/AppData/Local/MiKTeX/2.9/pdftex/con
+fig/pdftex.map}
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 4--5
-\OT1/cmr/m/n/10 http://www.theprojectspot.com/tutorial-
- []
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 6.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 6.
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--5
-\OT1/cmr/m/n/10 post/creating-a-genetic-algorithm-for-
- []
-
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-[1{C:/Users/bowmanrs1/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
-
-
-])
-[2
-
-] (geneticalgorithm.aux) ) 
+ [2]
+(geneticalgorithm.aux) ) 
 Here is how much of TeX's memory you used:
- 3355 strings out of 493634
- 48205 string characters out of 3133608
- 260468 words of memory out of 3000000
- 6726 multiletter control sequences out of 15000+200000
- 7280 words of font info for 26 fonts, out of 3000000 for 9000
+ 3354 strings out of 493634
+ 48211 string characters out of 3133608
+ 261468 words of memory out of 3000000
+ 6729 multiletter control sequences out of 15000+200000
+ 7588 words of font info for 27 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 33i,7n,58p,640b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bowmanrs1/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bowmanrs1/
-AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
+ 33i,7n,58p,1765b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/bowmanrs1/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bowmanrs1/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/
 Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr17.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb>
-Output written on geneticalgorithm.pdf (2 pages, 70595 bytes).
+m/cmr10.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr12.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/bowmanrs1/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on geneticalgorithm.pdf (2 pages, 93270 bytes).
 PDF statistics:
- 29 PDF objects out of 1000 (max. 8388607)
+ 37 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
