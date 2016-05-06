@@ -114,35 +114,6 @@ public class Generation {
         int maxIndex = 0;
         float maxVal = 99999;
         
-        //selection sort of scored predecessors
-        for (int i = 0; i < predecessors.Count; i++)
-        {
-            maxVal = 0;
-            maxIndex = i;
-            for (int j = i; j < predecessors.Count; j++)
-            {
-                if (predecessors[j].getCompositeScore() > maxVal)
-                {
-                    maxIndex = j;
-                    maxVal = predecessors[j].getCompositeScore();
-                }
-            }
-            if (maxIndex != i)
-            {
-                //swap lowest element into position
-                Graph swapthisout = new Graph(predecessors[i]);
-                Graph minElement = new Graph(predecessors[maxIndex]);
-                predecessors.RemoveAt(i);
-                predecessors.Insert(i, minElement);
-                predecessors.RemoveAt(maxIndex);
-                predecessors.Insert(maxIndex, swapthisout);
-            }
-        }
-
-        foreach(Graph g in predecessors)
-        {
-            g.connectAllNodes();//reconnect after sort
-        }
 
         //build new graphs until we have a new generation
         offspring = new List<Graph>();
