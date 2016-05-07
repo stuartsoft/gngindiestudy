@@ -113,7 +113,6 @@ public class Generation {
         //selection sort
         int maxIndex = 0;
         float maxVal = 99999;
-        
 
         //build new graphs until we have a new generation
         offspring = new List<Graph>();
@@ -262,10 +261,13 @@ public class Generation {
         if (getGenNum() == 1)
         {
             //delte log file
-            File.Delete(Application.dataPath + "/test.txt");
+            File.Delete(Application.dataPath + "/results.txt");
         }
-        Debug.Log(Application.dataPath + "/test.txt");
-        File.AppendAllText(Application.dataPath + "/test.txt", "Gen "+ getGenNum() + "\n"+ getSummary()+"\n----------\n");
+        Debug.Log(Application.dataPath + "/results.txt");
+        //File.AppendAllText(Application.dataPath + "/results.txt", "Gen "+ getGenNum() + "\n"+ getSummary()+"\n----------\n");//append full summary
+        File.AppendAllText(Application.dataPath + "/results.txt", getGenNum() + "\t" + predecessors[0].nodes.Count +
+            "\t" + predecessors[0].getAStarPathSuccess() * 100 + "\t" + predecessors[0].getAStarAvgPathLength() + "\n");
+        
     }
 
 }

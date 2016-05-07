@@ -174,7 +174,7 @@ public class Genetic : MonoBehaviour {
         updateGraphUI();
     }
 
-    //creates a fresh generation that does not inherit from previous generation.\
+    //creates a fresh generation that does not inherit from previous generation.
     //Graph size will grow by a static amount
     public void getNewDecendents()
     {
