@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+Stuart Bowman 2016
+
+This class contains the graph nodes themselves, as well as helper functions for use by the generation class
+to better facilitate evaluation and breeding. It also contains the class definition for the nodes themselves,
+as well as the A* search implementation used by the genetic algorithm to check if a path can be traced between
+two given points on the maze.
+
+*/
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 

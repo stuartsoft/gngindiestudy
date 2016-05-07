@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+Stuart Bowman 2016
+
+This is the main driver class for our genetic algorithm. It primarily handles user interface callbacks, 
+creates initial populations to feed to the Generation class, and handles building gameobjects on the fly
+to display the generated waypoint graphs.
+*/
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;

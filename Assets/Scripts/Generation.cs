@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+Stuart Bowman 2016
+
+This class operates as a container for all of the graphs used in a given generation. It handles generation construction, 
+evaluation, selection, breeding, and mutation, as well as tabulating and recording results to an output file for easy access once testing is complete.
+
+*/
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -11,8 +19,7 @@ public class Generation {
     List<Vector2> samplePointEnd;
     public static int numEntitiesPerGeneration = 200;//Constant for the number of graphs to build in each generation
     public static int numAStarPathChecks = 100;//number of random start and end pairs to generate and check during the evaluation phase
-    public static int nodeGrowthRate = 0;
-    public static float precentToReplace = 0.1f;//precentage (as fraction) of population to remove and replace with fresh nodes
+    public static float precentToReplace = 0.1f;//percentage (as fraction) of population to remove and replace with fresh nodes
 
     int finalGeneration;
     int generationIndex;
