@@ -12,7 +12,7 @@
 	\subsection{Selection and Crossover}
 	With the population evaluated and sorted by fitness, the algorithm can then go through the list of graphs and begin breeding. The breeding system involves systematically running through the population and ``mating" the most fit graphs first. The process continues until enough offspring have been generated to replace the previous population. If every graph in the current population has had a chance to breed but there are not enough offspring to replace their elders, the process will start again with the two most fit graphs.
 	
-	The breeding process itself between the two graphs is as follows. Parent graph \(a\) and \(b\) are both checked for their A* satisfaction rating. Let \(p\) represent the higher of these two A* satisfaction values. Let \(k\) represent the percentage of crossover nodes to be removed from the breeding process. By cycling out a certain percentage of nodes during each breeding phase, inbreeding is prevented and additional diversity of graphs are reintroduced at each breeding stage. Let \(N\) represent the total number of nodes in parent graph \(a\). The new child graph \(c\) is then creating using a randomly selected node \(n1\) from graph \(a\) and a randomly selected node \(n2\) from graph \(b\) (provided that \(n1\) and \(n2\) have not previously been selected from \(a\) and \(b\) respectively). Nodes are randomly selected from \(a\) and \(b\) until graph \(c\) contains \((N*(1-k))/2)\) Finally, the new graph is given a boost of new nodes, up to \((1-p)*N * V\) where \(V\) represents a normally distributed random float value. This step also allows the graphs to grow (or shrink) from one generation to the next and introduces graph diversity.
+	The breeding process itself between the two graphs is as follows. Parent graph \(a\) and \(b\) are both checked for their A* satisfaction rating. Let \(p\) represent the higher of these two A* satisfaction values. Let \(k\) represent the percentage of crossover nodes to be removed from the breeding process. By cycling out a certain percentage of nodes during each breeding phase, inbreeding is prevented and additional diversity of graphs are reintroduced at each breeding stage. Let \(N\) represent the total number of nodes in parent graph \(a\). The new child graph \(c\) is then creating using a randomly selected node \(n1\) from graph \(a\) and a randomly selected node \(n2\) from graph \(b\) (provided that \(n1\) and \(n2\) have not previously been selected from \(a\) and \(b\) respectively). Nodes are randomly selected from \(a\) and \(b\) until graph \(c\) contains \((N*(1-k))/2)\) nodes. Finally, the new graph is given an additional set of new nodes, adding \(((1-p)*N * V)\) nodes to \(c\) where \(V\) represents a normally distributed random float value. This step also allows the graphs to grow (or shrink) from one generation to the next and introduces graph diversity.
 
 \section{Implementation and Tuning}
 
@@ -24,7 +24,7 @@
 		\item[BuildMaze.cs] Borrowed from last semester's gngstudy, this class handles the process of parsing and reconstructing the maze in Unity. This allowed the Genetic class to pass maze geometry information along to the Generation and Graph classes for use in node creation.
 	\end{description}
 	
-	\subsection{Constants and tuning values}
+	\subsection{Constraints}
 	In addition to the algorithm structure and class structure detailed above, there were several constant values used to tune and regulate various components of the generational evolution.
 	\begin{description}
 		\item[Genetic.GraphInitialNodes] Indicated the number of nodes the initial generation of graphs should contain. Graph size will fluctuate after the first generation, usually increasing and then beginning to level off after a certain point
@@ -32,4 +32,21 @@
 		\item[Generation.numAStarPathChecks] Indicates the number of random pairs of points that will be placed and checked each generation during the eval stage. The resulting percentage of point pairs that can successfully be mapped using A* will be stored under \texttt{Graph.AStarPathSuccess}
 		\item[Generation.percentToReplace] Percentage of population to remove during the crossover and mutation stage. The removal of nodes at this stage allows for the introduction of new nodes which keep the population from becoming overly homogeneous. Percentage value is represented as a float.
 	\end{description}
+	
+	\subsection{Algorithm Refinement}
+	Over the course of our development we experimented with multiple different maze configurations, constraint tuning, and crossover adjustments. Early on in development, a larger graph was used to demonstrate the basic functionality of the various genetic algorithm components. However, once the full algorithm was implemented, we chose to instead opt for a significantly smaller graph, which significantly improved runtime usability and allowed for a much easier comparison between graphs within the same population as well as comparisons from generation to generation. The smaller graph also allowed the initial population to begin with a fitness of 10-20\% A* satisfaction, up from 1\% with the large maze, which helped reduce the number of nodes required to start a generation, thus allowing the algorithm to run a little quicker.
+	
+	\subsubsection{Crossover Refinements}
+	Many of the improvements that were made were also related to the crossover stage of the algorithm. Specifically, there were several major changes that were made to improve generational A* satisfaction progress, as well as reduce the number of nodes required to reach higher satisfaction values.
+	
+	Initially, crossover was implemented simply as a breeding stage, merging half of the nodes from each parent into a child graph. As the algorithm began to take shape however, it was quickly discovered that overly homogeneous populations were causing the graphs to decline in fitness from generation to generation. To rectify this issue, we modified the crossover stage to instead cycle out about 10\% of the nodes from the parents and instead replace them with new nodes.
+	
+	Additionally, we recognized that the graph size would need to flucuate in order to properly cover the maze's walkable area and improve fitness
+	%talk about how we first used static graph growth
+	%then talk about how we are now regulating graph growth relative to fitness using our special formula
+	
+	
+	
+	
+	
 	

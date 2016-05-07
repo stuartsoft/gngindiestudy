@@ -65,7 +65,6 @@ public class Generation {
         if (!hasBeenEvaluated)
             eval();
         crossover();
-        onComplete();
         return offspring;//all grown up!
         //return new Generation(generationIndex + 1, entities, alpha, beta, floors, walls);
     }
@@ -212,15 +211,6 @@ public class Generation {
         }        
 
     ///!!!
-    }
-
-    void mutate()
-    {
-
-    }
-
-    void onComplete()
-    {
     }
 
     Vector2 randPosInMaze()
