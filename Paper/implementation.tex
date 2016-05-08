@@ -33,6 +33,13 @@
 		\item[Generation.percentToReplace] Percentage of population to remove during the crossover and mutation stage. The removal of nodes at this stage allows for the introduction of new nodes which keep the population from becoming overly homogeneous. Percentage value is represented as a float.
 	\end{description}
 	
+	
+	\begin{figure}
+		\includegraphics[width=1\columnwidth]{tests/geneticT3b}
+		\caption{The most fit waypoint graphs from the 3rd trial of our genetic algorithm. Sampled at generations 1, 5, 10, and 15 respectively. Red nodes are inherited from previous generations, while green nodes are freshly created nodes.}
+	\end{figure}
+	
+	
 	\subsection{Algorithm Refinement}
 	Over the course of our development we experimented with multiple different maze configurations, constraint tuning, and crossover adjustments. Early on in development, a larger graph was used to demonstrate the basic functionality of the various genetic algorithm components. However, once the full algorithm was implemented, we chose to instead opt for a significantly smaller graph, which significantly improved runtime usability and allowed for a much easier comparison between graphs within the same population as well as comparisons from generation to generation. The smaller graph also allowed the initial population to begin with a fitness of 10-20\% A* satisfaction, up from 1\% with the large maze, which helped reduce the number of nodes required to start a generation, thus allowing the algorithm to run a little quicker.
 	
@@ -41,9 +48,7 @@
 	
 	Initially, crossover was implemented simply as a breeding stage, merging half of the nodes from each parent into a child graph. As the algorithm began to take shape however, it was quickly discovered that overly homogeneous populations were causing the graphs to decline in fitness from generation to generation. To rectify this issue, we modified the crossover stage to instead cycle out about 10\% of the nodes from the parents and instead replace them with new nodes.
 	
-	Additionally, we recognized that the graph size would need to flucuate in order to properly cover the maze's walkable area and improve fitness
-	%talk about how we first used static graph growth
-	%then talk about how we are now regulating graph growth relative to fitness using our special formula
+	Additionally, we recognized that the graph size would need to fluctuate in order to properly cover the maze's walkable area and improve fitness. Initially we had the graphs grow at a predictable steady rate at each generation, however after testing this system, we found that high A* satisfaction was likely only being reached by over saturating the maze with nodes. Our alternative approach involved modifying how many nodes would replace the 10\% that were originally removed. In order to prevent the graphs from growing indefinetly, we implemented a system to grow the graph depending on it's parent's A* satisfaction rating. The higher a parent's A* satisfaction rating, the fewer nodes will be added to it's children. This also allows the node count to plateau after a certain number of generations, and in some cases decrease after a certain point.
 	
 	
 	
