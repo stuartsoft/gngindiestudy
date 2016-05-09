@@ -1,14 +1,14 @@
 \section{Introduction}
 	A* is known to be the undisputed champion of path finding for start to finish traversals of graphs and 2D planar environments. A* pathfinding does however require a set of waypoints to analyze viable paths and traverse terrain. While it isn't unreasonable to manually create a set of waypoints for most applications or use cases, it would be ideal to automate the process of generating and connecting the waypoints needed to run A* on a given environment. Genetic algorithms may provide a vehicle for creating, modifying and evolving data in order to provide the optimized graphs needed to run A*.
 	
-	Genetic algorithms, as defined by John McCall, are “a heuristic search and optimization technique inspired by natural evolution”. [2] In their broadest sense, they represent a small branch of artificial intelligence that exists to construct solutions for problems that require optimizing many different attributes or parameters simultaneously. They are particularly useful under contexts where solutions can be optimized through repeated generational selection and breeding of entities containing desirable traits. [1]
+	Genetic algorithms, as defined by John McCall, are “a heuristic search and optimization technique inspired by natural evolution”. [2] In their broadest sense, they represent a small branch of artificial intelligence that exists to construct solutions for problems that require optimizing many different attributes or parameters simultaneously. They are particularly useful under contexts where solutions can be optimized through repeated generational selection and the breeding of entities containing desirable traits. [1]
 	
 	Genetic algorithms provide an excellent platform for rapidly building, evolving and mutating data to follow a series of metrics through heuristical analysis. The full process can be broken down into several steps: [1]
 	
 	\begin{enumerate}
 		\item Initialization of the base population to start the first generation
 		\item Evaluation of each data member's fitness relative to the goal
-		\item Selection of the most fit individuals in the current generation to be used to breed the next generation. This selection should usually strive to direct the population towards a generation of individuals with preferred traits.
+		\item Selection of the most fit individuals in the current generation to be used to breed the next generation. (This selection should usually strive to direct the population towards a generation of individuals with preferred traits.)
 		\item The Crossover stage is known as the breeding step. This typically involves borrowing a mix of traits from each of the parents to create a new child entity or entities to be evaluated in the next generation.
 		\item Mutations are used to introduce small, random or nondeterministic changes in a child's traits that does not reflect the parent’s attributes. This can be used to prevent populations from becoming overly homogeneous.
 		\item Repeat the process, starting at step 2, and evaluate the most recent generation.
