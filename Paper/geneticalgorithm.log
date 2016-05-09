@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.2)  9 MAY 2016 09:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.2)  9 MAY 2016 11:20
 entering extended mode
 **./geneticalgorithm.tex
 (geneticalgorithm.tex
@@ -367,21 +367,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--32
  []
 
 
-Underfull \hbox (badness 7468) in paragraph at lines 31--32
-\OT1/cmr/m/n/10 Dictates the num-ber of dece-dent graphs
- []
-
-
-Underfull \hbox (badness 3407) in paragraph at lines 31--32
-\OT1/cmr/m/n/10 that will be cre-ated dur-ing the crossover
- []
-
-
-Underfull \hbox (badness 1107) in paragraph at lines 31--32
-\OT1/cmr/m/n/10 stant, mean-ing each gen-er-a-tion will con-tain
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 32--33
 []\OT1/cmr/m/n/10 Indicates
  []
@@ -389,6 +374,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 32--33
 
 Underfull \hbox (badness 10000) in paragraph at lines 33--34
 []\OT1/cmr/m/n/10 Percentage of
+ []
+
+
+Underfull \hbox (badness 2726) in paragraph at lines 33--34
+\OT1/cmr/m/n/10 keep the pop-u-la-tion from be-com-ing overly
  []
 
 <tests/geneticT3b.png, id=16, 1286.8075pt x 1286.8075pt>
@@ -424,33 +414,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 )
 (results.tex [5 <./tests/satgraphsize.png>]) (end.tex
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
-
-Underfull \hbox (badness 1460) in paragraph at lines 10--11
-\OT1/cmr/m/n/10 Al-go-rithm for Be-gin-ners [Blog]. Avail-able:
+Overfull \hbox (18.2897pt too wide) in paragraph at lines 12--13
+[]\OT1/cmr/m/n/10 Available: http://www.theprojectspot.com/tutorial-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
-\OT1/cmr/m/n/10 http://www.theprojectspot.com/tutorial-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--11
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
 \OT1/cmr/m/n/10 post/creating-a-genetic-algorithm-for-
  []
 
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ú in font cmr10!
-Missing character: There is no ‚ in font cmr10!
-Missing character: There is no Ä in font cmr10!
-Missing character: There is no ù in font cmr10!
 ) [6] (geneticalgorithm.aux) ) 
 Here is how much of TeX's memory you used:
  4428 strings out of 493634
@@ -459,7 +431,7 @@ Here is how much of TeX's memory you used:
  7787 multiletter control sequences out of 15000+200000
  8409 words of font info for 30 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 36i,7n,58p,1766b,250s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,7n,58p,1781b,250s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/bowmanrs1/AppData/Loca
 l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bowma
@@ -472,7 +444,7 @@ ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/bo
 wmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10
 .pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmtt10.pfb>
-Output written on geneticalgorithm.pdf (6 pages, 378317 bytes).
+Output written on geneticalgorithm.pdf (6 pages, 378178 bytes).
 PDF statistics:
  66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
