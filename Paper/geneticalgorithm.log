@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.2)  8 MAY 2016 17:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.2)  8 MAY 2016 23:18
 entering extended mode
 **./geneticalgorithm.tex
 (geneticalgorithm.tex
@@ -213,6 +213,25 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen115
 \Gin@req@width=\dimen116
 )
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\captio
+n.sty"
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\captio
+n3.sty"
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen117
+\captionmargin@=\dimen118
+\captionwidth=\dimen119
+\caption@tempdima=\dimen120
+\caption@indent=\dimen121
+\caption@parindent=\dimen122
+\caption@hangindent=\dimen123
+)
+\c@ContinuedFloat=\count150
+Package caption Info: listings package is loaded.
+)
 ("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstla
 ng1.sty"
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -227,21 +246,21 @@ File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 ) (geneticalgorithm.aux)
 \openout1 = `geneticalgorithm.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
 
 
-Package layouts Warning: Layout scale set to 0.5 on input line 21.
+Package layouts Warning: Layout scale set to 0.5 on input line 22.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -277,29 +296,31 @@ Package layouts Warning: Layout scale set to 0.5 on input line 21.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count150
+\c@lstlisting=\count151
 
 ("C:\Users\bowmanrs1\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pd
 f.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count151
-\scratchdimen=\dimen117
+\scratchcounter=\count152
+\scratchdimen=\dimen124
 \scratchbox=\box29
-\nofMPsegments=\count152
-\nofMParguments=\count153
+\nofMPsegments=\count153
+\nofMParguments=\count154
 \everyMPshowfont=\toks18
-\MPscratchCnt=\count154
-\MPscratchDim=\dimen118
-\MPnumerator=\count155
-\makeMPintoPDFobject=\count156
+\MPscratchCnt=\count155
+\MPscratchDim=\dimen125
+\MPnumerator=\count156
+\makeMPintoPDFobject=\count157
 \everyMPtoPDFconversion=\toks19
 )
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 24.
+(Font)              <12> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 24.
+(Font)              <8> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 24.
+(Font)              <6> on input line 25.
  (intro.tex
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
@@ -341,11 +362,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--25
  []
 
 
-Underfull \hbox (badness 1478) in paragraph at lines 24--25
-\OT1/cmr/m/n/10 gngstudy, this class han-dles the pro-cess of
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 31--32
 []
  []
@@ -381,41 +397,33 @@ File: tests/geneticT3b.png Graphic file (type png)
 <use tests/geneticT3b.png>
 Package pdftex.def Info: tests/geneticT3b.png used on input line 38.
 (pdftex.def)             Requested size: 229.8775pt x 229.86783pt.
- [3 <./tests/geneticT3b.png>]) (results.tex
-<tests/genfitness.png, id=22, 1013.7875pt x 551.05875pt>
+
+<tests/genfitness.png, id=18, 1013.7875pt x 551.05875pt>
 File: tests/genfitness.png Graphic file (type png)
 
 <use tests/genfitness.png>
-Package pdftex.def Info: tests/genfitness.png used on input line 8.
-(pdftex.def)             Requested size: 275.8523pt x 149.9398pt.
+Package pdftex.def Info: tests/genfitness.png used on input line 43.
+(pdftex.def)             Requested size: 469.75502pt x 255.33995pt.
 
-Overfull \hbox (45.9748pt too wide) in paragraph at lines 8--9
-[][] 
- []
-
-<tests/gengraphsize.png, id=23, 1010.77625pt x 547.04375pt>
+<tests/gengraphsize.png, id=19, 1010.77625pt x 547.04375pt>
 File: tests/gengraphsize.png Graphic file (type png)
 
 <use tests/gengraphsize.png>
-Package pdftex.def Info: tests/gengraphsize.png used on input line 13.
-(pdftex.def)             Requested size: 275.8523pt x 149.28975pt.
+Package pdftex.def Info: tests/gengraphsize.png used on input line 48.
+(pdftex.def)             Requested size: 469.75502pt x 254.23915pt.
 
-Overfull \hbox (45.9748pt too wide) in paragraph at lines 13--14
-[][] 
- []
-
-<tests/satgraphsize.png, id=24, 1014.79124pt x 548.0475pt>
+<tests/satgraphsize.png, id=20, 1014.79124pt x 548.0475pt>
 File: tests/satgraphsize.png Graphic file (type png)
 
 <use tests/satgraphsize.png>
-Package pdftex.def Info: tests/satgraphsize.png used on input line 18.
-(pdftex.def)             Requested size: 275.8523pt x 148.96994pt.
+Package pdftex.def Info: tests/satgraphsize.png used on input line 53.
+(pdftex.def)             Requested size: 469.75502pt x 253.69379pt.
+ [3 <./tests/geneticT3b.png>] [4 <./tests/genfitness.png> <./tests/gengraphsize
+.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Overfull \hbox (45.9748pt too wide) in paragraph at lines 18--19
-[][] 
- []
-
-[4 <./tests/genfitness.png> <./tests/gengraphsize.png>]) (end.tex
+)
+(results.tex [5 <./tests/satgraphsize.png>]) (end.tex
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ú in font cmr10!
@@ -443,30 +451,30 @@ Missing character: There is no ú in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ù in font cmr10!
-) [5 <./tests/satgraphsize.png>] (geneticalgorithm.aux) ) 
+) [6] (geneticalgorithm.aux) ) 
 Here is how much of TeX's memory you used:
- 3370 strings out of 493634
- 48461 string characters out of 3133608
- 262468 words of memory out of 3000000
- 6735 multiletter control sequences out of 15000+200000
+ 4428 strings out of 493634
+ 67747 string characters out of 3133608
+ 282365 words of memory out of 3000000
+ 7787 multiletter control sequences out of 15000+200000
  8409 words of font info for 30 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 33i,7n,58p,1766b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/bowmanrs1/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/U
-sers/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmbx12.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmmi10.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/bowmanrs1/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/bowmanrs
-1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C
-:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmsy10.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmti10.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on geneticalgorithm.pdf (5 pages, 376651 bytes).
+ 36i,7n,58p,1766b,250s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/bowmanrs1/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/bowma
+nrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr10.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr12.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/bowmanrs1/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/bo
+wmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10
+.pfb><C:/Users/bowmanrs1/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmtt10.pfb>
+Output written on geneticalgorithm.pdf (6 pages, 377580 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

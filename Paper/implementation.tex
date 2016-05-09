@@ -21,7 +21,7 @@
 		\item[Genetic.cs] The main driver class for our genetic algorithm. It primarily handles user interface callbacks, creates initial populations to feed to the Generation class, and handles building gameobjects on the fly to display the generated waypoint graphs.
 		\item[Generation.cs] Operates as a container for all of the graphs used in a given generation. It handles generation construction, evaluation, selection, breeding, and mutation, as well as tabulating and recording results to an output file for easy access once testing is complete.
 		\item[Graph.cs] Contains the graph nodes themselves, as well as helper functions for use by the generation class to better facilitate evaluation and breeding. It also contains the class definition for the nodes themselves, as well as the A* search implementation used by the genetic algorithm to check if a path can be traced between two given points on the maze.
-		\item[BuildMaze.cs] Borrowed from last semester's gngstudy, this class handles the process of parsing and reconstructing the maze in Unity. This allowed the Genetic class to pass maze geometry information along to the Generation and Graph classes for use in node creation.
+		\item[BuildMaze.cs] Borrowed from last semester's gngindiestudy, this class handles the process of parsing and reconstructing the maze in Unity. This allowed the Genetic class to pass maze geometry information along to the Generation and Graph classes for use in node creation.
 	\end{description}
 	
 	\subsection{Constraints}
@@ -39,6 +39,20 @@
 		\caption{The most fit waypoint graphs from the 3rd trial of our genetic algorithm. Sampled at generations 1, 5, 10, and 15 respectively. Red nodes are inherited from previous generations, while freshly created nodes are labeled in green.}
 	\end{figure}
 	
+	\begin{figure*}
+		\includegraphics[width=\textwidth]{tests/genfitness}
+		\caption{Red, Blue and Orange show the trials using our genetic algorithm, while Green, Purple and Cyan show trials using uninformed node placement.}
+	\end{figure*}
+	
+	\begin{figure*}
+		\includegraphics[width=\textwidth]{tests/gengraphsize}
+		\caption{Green shows graph size growth for uninformed trials, while Red, Green and Orange show graph size for trials using our genetic algorithm. The uninformed system uses significantly more nodes, which is undesirable for A*.}
+	\end{figure*}
+	
+	\begin{figure*}
+		\includegraphics[width=\textwidth]{tests/satgraphsize}
+		\caption{The Genetic algorithm (Triangles) consistently demonstrates that it requires far fewer nodes than the uninformed system to achieve approximately the same A* Satisfaction rating. (Circles)}
+	\end{figure*}
 	
 	\subsection{Algorithm Refinement}
 	Over the course of our development we experimented with multiple different maze configurations, constraint tuning, and crossover adjustments. Early on in development, a larger graph was used to demonstrate the basic functionality of the various genetic algorithm components. However, once the full algorithm was implemented, we chose to instead opt for a significantly smaller graph, which significantly improved runtime usability and allowed for a much easier comparison between graphs within the same population as well as comparisons from generation to generation. The smaller graph also allowed the initial population to begin with a fitness of 10-20\% A* satisfaction, up from 1\% with the large maze, which helped reduce the number of nodes required to start a generation, thus allowing the algorithm to run a little quicker.
